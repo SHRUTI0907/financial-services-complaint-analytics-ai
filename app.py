@@ -7,22 +7,15 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-from src.analytics.anomaly import detect_spikes, emerging_issue_score
+from src.analytics.anomaly import emerging_issue_score
 from src.analytics.benchmarking import company_benchmark
 from src.analytics.complaints import kpi_summary, top_categories, volume_by_month
-from src.config import AI_OPPORTUNITIES_PATH, AI_RISK_REGISTER_PATH, AI_SYSTEM_INVENTORY_PATH, ARTIFACT_DIR, BLS_WAGE_BENCHMARKS_PATH, COMPLAINTS_PARQUET, FRED_ANALYSIS_PATH, FRED_OBSERVATIONS_PATH, GOVERNANCE_CONTROLS_PATH, METADATA_PATH, MODEL_REPORT_PATH, QUALITY_PROFILE_PATH, RAG_EVAL_METRICS_PATH, RAG_EVAL_PATH, RAG_INDEX_PATH, SEC_LINEAGE_PATH, TOPIC_REGISTRY_PATH, VALUE_MONTE_CARLO_PATH, VALUE_SCENARIO_PATH
-from src.governance.nist import governance_catalog
-from src.governance.inventory import ai_system_inventory, governance_controls, risk_register
-from src.nlp.retrieval import retrieve_evidence
+from src.config import ARTIFACT_DIR, COMPLAINTS_PARQUET, METADATA_PATH, MODEL_REPORT_PATH, RAG_EVAL_METRICS_PATH, TOPIC_REGISTRY_PATH
 from src.rag.assistant import build_context, generate_answer
 from src.rag.retrieval import RagFilters
-from src.reporting.lineage import lineage_table
-from src.storage.duckdb_store import get_store_status
-from src.value.model import SCENARIOS, ValueAssumptions, apply_scenario, calculate_value, monte_carlo_summary, monte_carlo_value, scenario_table, sensitivity
-from src.value.opportunities import derive_ai_opportunities
 
 
-st.set_page_config(page_title="CFPB Complaint Lab", page_icon="FS", layout="wide")
+st.set_page_config(page_title="Financial Services Complaint Analytics", layout="wide")
 
 CSS = """
 <style>
@@ -299,18 +292,6 @@ def load_complaints() -> pd.DataFrame | None:
     return pd.read_parquet(COMPLAINTS_PARQUET)
 
 
-def money(value: float) -> str:
-    if pd.isna(value):
-        return "n/a"
-    sign = "-" if value < 0 else ""
-    value = abs(value)
-    if value >= 1_000_000:
-        return f"{sign}${value/1_000_000:,.1f}M"
-    if value >= 1_000:
-        return f"{sign}${value/1_000:,.1f}K"
-    return f"{sign}${value:,.0f}"
-
-
 def styled_fig(fig, height: int = 390):
     fig.update_layout(
         height=height,
@@ -336,25 +317,6 @@ def page_header(kicker: str, title: str, body: str) -> None:
 def metric_card(label: str, value: str, note: str = "") -> None:
     st.markdown(
         f"<div class='metric-card'><div class='label'>{label}</div><div class='value'>{value}</div><div class='note'>{note}</div></div>",
-        unsafe_allow_html=True,
-    )
-
-
-def product_hero(kicker: str, title: str, body: str, rail: list[tuple[str, str]]) -> None:
-    rail_html = "".join(f"<div class='rail-card'><strong>{heading}</strong><span>{text}</span></div>" for heading, text in rail)
-    st.markdown(
-        f"""
-        <div class="hero-shell">
-          <div class="hero-grid">
-            <div class="hero-copy">
-              <div class="hero-kicker">{kicker}</div>
-              <h1>{title}</h1>
-              <p>{body}</p>
-            </div>
-            <div class="hero-rail">{rail_html}</div>
-          </div>
-        </div>
-        """,
         unsafe_allow_html=True,
     )
 
@@ -389,48 +351,9 @@ def sidebar_filters(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def empty_state() -> None:
-    product_hero(
-        "Built on real CFPB complaints",
-        "A complaint-analysis lab for financial services risk, operations, and automation ideas.",
-        "I built this around the public CFPB complaint database because it is messy in the exact way real business data is messy. The app starts with the records, checks the data, finds patterns, and only then talks about where automation might help.",
-        [
-            ("No made-up companies", "If the CFPB store is missing, the app shows this setup page instead of pretending."),
-            ("Messy data is the point", "Narratives are sparse, company names are inconsistent, and category history matters."),
-            ("Every number has a trail", "The app keeps source, transformation, assumption, and limitation close to the metric."),
-        ],
-    )
-    st.markdown(
-        """
-        <div class="command-grid">
-          <div class="command-card"><strong>Development refresh</strong><span>Build a fast official CFPB extract for UI review and iteration.</span></div>
-          <div class="command-card"><strong>Full refresh</strong><span>Remove the cap when you want the whole public bulk file.</span></div>
-          <div class="command-card"><strong>Recent slice</strong><span>Use the API helper when you only need a newer date window.</span></div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    tabs = st.tabs(["Fast start", "Full store", "Recent API slice"])
-    with tabs[0]:
-        st.code("python -m src.pipeline --max-records 250000", language="bash")
-    with tabs[1]:
-        st.code("python -m src.pipeline", language="bash")
-    with tabs[2]:
-        st.code("python -m src.ingestion.cfpb_api --date-min 2026-01-01 --max-pages 25", language="bash")
-    st.caption("Large raw and processed files are cached locally and ignored by Git.")
-    st.markdown(
-        """
-        <div class="mosaic">
-          <div class="source-tile"><strong>CFPB complaints</strong><span>Dates, products, issues, companies, responses, and public narratives.</span></div>
-          <div class="source-tile"><strong>SEC EDGAR</strong><span>Optional scale data for public companies when the match is defensible.</span></div>
-          <div class="source-tile"><strong>BLS OEWS</strong><span>Optional wage benchmarks for capacity modeling. Not company payroll data.</span></div>
-          <div class="source-tile"><strong>NIST AI RMF</strong><span>A practical checklist for risks, controls, and human review.</span></div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    st.error("Processed CFPB data artifact not found. This deployment expects `data/processed/cfpb_complaints.parquet` to be included.")
 
 
-status = get_store_status()
 df = load_complaints()
 if df is None:
     empty_state()
@@ -442,19 +365,10 @@ page = st.sidebar.radio(
     "Navigation",
     [
         "Overview",
-        "Portfolio Story",
-        "Complaint Trends",
-        "Company Benchmarks",
-        "Risk Watch",
-        "Narrative Topics",
-        "Automation Ideas",
-        "Value Realization",
-        "Scenario Lab",
-        "Macro Context",
-        "Model Performance",
-        "Governance",
-        "Evidence Search",
-        "Data Notes",
+        "Complaint Patterns",
+        "Company View",
+        "NLP + RAG",
+        "Model Evidence",
     ],
 )
 
@@ -463,407 +377,117 @@ metadata = json.loads(METADATA_PATH.read_text(encoding="utf-8")) if METADATA_PAT
 if page == "Overview":
     page_header(
         "Overview",
-        "What the complaint data is saying",
-        "Start here: volume, coverage, model evidence, and the areas worth investigating before making any automation claim.",
+        "Financial Services Complaint Analytics & AI Decision Support Platform",
+        "A market-ready Streamlit analytics project built on real CFPB complaint data, focused on complaint patterns, NLP evidence, and model performance.",
     )
-    st.markdown("<div class='warning'>CFPB complaints are useful evidence, but they are not a perfect sample of all consumer experiences. Treat spikes as leads for investigation, not proof of cause.</div>", unsafe_allow_html=True)
     kpi = kpi_summary(filtered)
-    if final_metrics:
-        signal_strip(
-            [
-                (f"{final_metrics['model_macro_f1']:.3f}", "Product-routing model macro F1"),
-                (f"{final_metrics['topics']:,}", "Topics found in public narratives"),
-                (f"{final_metrics['opportunities']:,}", "Automation ideas backed by volume"),
-                (f"{final_metrics['rag_groundedness_pass_rate']:.0%}", "Evidence-search citation pass rate"),
-                (f"{final_metrics['parquet_size_mb']} MB", "Compressed Parquet store"),
-            ]
-        )
-    cols = st.columns(6)
-    with cols[0]: metric_card("Complaints", f"{kpi['complaints']:,}", f"{kpi['date_min']} to {kpi['date_max']}")
-    with cols[1]: metric_card("Companies", f"{kpi['companies']:,}", "Observed in selected data")
-    with cols[2]: metric_card("Products", f"{kpi['products']:,}", "CFPB taxonomy")
-    with cols[3]: metric_card("Issues", f"{kpi['issues']:,}", "Consumer-selected issue")
-    with cols[4]: metric_card("Narratives", f"{kpi['narratives']:,}", "Public opt-in narratives")
-    with cols[5]: metric_card("Refresh", metadata.get("retrieved_at_utc", "n/a")[:10], "Local store")
-    left, right = st.columns([1.4, 1])
+    signal_strip(
+        [
+            (f"{kpi['complaints']:,}", "CFPB complaints analyzed"),
+            (f"{kpi['companies']:,}", "Companies"),
+            (f"{kpi['products']:,}", "Products"),
+            (f"{kpi['issues']:,}", "Issues"),
+            (f"{kpi['narratives']:,}", "Public narratives"),
+        ]
+    )
+    left, right = st.columns([1.45, 1])
     with left:
         monthly = volume_by_month(filtered)
-        st.plotly_chart(styled_fig(px.line(monthly, x="month", y="complaints", title="Complaint Volume Over Time"), 420), use_container_width=True)
+        st.plotly_chart(styled_fig(px.line(monthly, x="month", y="complaints", title="Complaint Volume Over Time"), 430), width="stretch")
     with right:
-        st.plotly_chart(styled_fig(px.bar(top_categories(filtered, "product", 10), x="complaints", y="product", orientation="h", title="Top Products"), 420), use_container_width=True)
-    emerg = emerging_issue_score(filtered, "issue").head(10)
-    st.subheader("Worth a closer look")
-    st.dataframe(emerg[["issue", "complaints", "baseline_mean", "z_score", "emerging_issue_score"]], use_container_width=True)
+        st.plotly_chart(styled_fig(px.bar(top_categories(filtered, "product", 10), x="complaints", y="product", orientation="h", title="Top Products"), 430), width="stretch")
+    st.markdown("<div class='warning'>Source: official CFPB Consumer Complaint Database. Metrics are calculated from the local processed CFPB dataset included with this repo.</div>", unsafe_allow_html=True)
 
-elif page == "Portfolio Story":
+elif page == "Complaint Patterns":
     page_header(
-        "Portfolio story",
-        "How this project positions you",
-        "This page is built for interviews. It explains the business problem, the analyst decisions, the AI features, and the tradeoffs without sounding rehearsed.",
+        "Analytics",
+        "Products, issues, trends, and anomaly signals",
+        "This section supports the resume claim around 12 products, 87 issue categories, trend analysis, and anomaly detection.",
     )
-    if final_metrics:
-        signal_strip(
-            [
-                (f"{final_metrics['record_count']:,}", "Real CFPB records processed"),
-                (f"{final_metrics['companies']:,}", "Companies observed"),
-                (f"{final_metrics['model_macro_f1']:.3f}", "Routing model macro F1"),
-                (f"{final_metrics['opportunities']:,}", "Automation ideas from patterns"),
-                (f"{final_metrics['topics']:,}", "Narrative topics"),
-            ]
-        )
-    st.markdown(
-        """
-        <div class="talk-track">
-          <strong>Interview version:</strong>
-          I built this because complaint data is a clean way to show business analysis with real operational stakes.
-          The data is public, but the problems are the same ones companies deal with internally: messy categories, repeated customer pain,
-          incomplete narratives, inconsistent company names, and pressure to automate without losing control.
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        """
-        <div class="story-board">
-          <div class="story-card"><small>Business question</small><strong>Where is the operational pain?</strong><p>The app starts with complaint burden by product, issue, company, geography, channel, and response. It avoids raw-count shortcuts by calling out denominator problems.</p></div>
-          <div class="story-card"><small>Analytics work</small><strong>What changed, and is it unusual?</strong><p>Monthly trends, rolling baselines, and z-score spikes turn complaint movement into investigation leads instead of vague chart watching.</p></div>
-          <div class="story-card"><small>NLP work</small><strong>What are people actually saying?</strong><p>Public narratives are cleaned, grouped into topics, searched by evidence, and used to train a routing classifier with a baseline comparison.</p></div>
-          <div class="story-card"><small>AI strategy</small><strong>Where could AI help without being reckless?</strong><p>Automation ideas come from observed patterns. Each one keeps a human role, data requirement, risk, and control attached.</p></div>
-          <div class="story-card"><small>Financial thinking</small><strong>What would the business case depend on?</strong><p>The value model uses complaint volume and editable assumptions. It shows when an idea is not financially attractive under baseline assumptions.</p></div>
-          <div class="story-card"><small>Governance</small><strong>What would block deployment?</strong><p>The project uses NIST-style risk dimensions to define testing, monitoring, escalation, and review rules before a tool touches a real workflow.</p></div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    st.subheader("How to talk about the AI features")
-    st.markdown(
-        """
-        - I did not add AI just to say AI. I used it where complaint operations actually create repeated text and routing problems.
-        - The classifier is useful because it is measurable: macro F1 improved from a weak baseline to a much stronger model on public narratives.
-        - The evidence search is intentionally boring: complaint IDs, dates, products, issues, and companies come before any written answer.
-        - The governance page is part of the product, not a footnote. That is the point.
-        """
-    )
+    dimension = st.selectbox("Analyze by", ["product", "issue"])
+    left, right = st.columns([1.15, 1])
+    with left:
+        st.plotly_chart(styled_fig(px.bar(top_categories(filtered, dimension, 20), x="complaints", y=dimension, orientation="h", title=f"Top {dimension.title()} Categories"), 520), width="stretch")
+    with right:
+        grouped = volume_by_month(filtered, dimension)
+        top_values = top_categories(filtered, dimension, 5)[dimension].tolist()
+        st.plotly_chart(styled_fig(px.line(grouped[grouped[dimension].isin(top_values)], x="month", y="complaints", color=dimension, title=f"Monthly Trend by {dimension.title()}"), 520), width="stretch")
+    anomalies = emerging_issue_score(filtered, dimension).head(15)
+    st.subheader("Anomaly detection signals")
+    st.dataframe(anomalies[[dimension, "complaints", "baseline_mean", "z_score", "emerging_issue_score"]], width="stretch")
 
-elif page == "Complaint Trends":
+elif page == "Company View":
     page_header(
-        "Complaint trends",
-        "Volume, mix, response, channel, and geography",
-        "This is the basic analyst view: pick a dimension, look at the top categories, then check whether the trend actually moved over time.",
+        "Companies",
+        "Complaint volume across 1,383 companies",
+        "Company analysis is shown as raw CFPB complaint volume, which keeps the comparison simple and transparent.",
     )
-    col = st.selectbox("Dimension", ["product", "issue", "company", "state", "submitted_via", "company_response_to_consumer"])
-    c1, c2 = st.columns([1.2, 1])
-    with c1:
-        st.plotly_chart(styled_fig(px.bar(top_categories(filtered, col, 20), x="complaints", y=col, orientation="h", title=f"Top {col} categories"), 520), use_container_width=True)
-    with c2:
-        grouped = volume_by_month(filtered, col)
-        top_values = top_categories(filtered, col, 5)[col].tolist()
-        st.plotly_chart(styled_fig(px.line(grouped[grouped[col].isin(top_values)], x="month", y="complaints", color=col, title=f"Monthly trend by {col}"), 520), use_container_width=True)
-    st.dataframe(filtered.head(1000), use_container_width=True)
+    bench = company_benchmark(filtered, pd.DataFrame())
+    left, right = st.columns([1.15, 1])
+    with left:
+        st.plotly_chart(styled_fig(px.bar(bench.head(20), x="raw_complaints", y="company", orientation="h", title="Top Companies by Complaint Volume"), 560), width="stretch")
+    with right:
+        selected_company = st.selectbox("Company detail", bench["company"].head(50).tolist())
+        company_df = filtered[filtered["company"] == selected_company]
+        metric_card("Selected company complaints", f"{len(company_df):,}", selected_company)
+        st.plotly_chart(styled_fig(px.bar(top_categories(company_df, "product", 8), x="complaints", y="product", orientation="h", title="Product Mix"), 390), width="stretch")
+    st.dataframe(bench.head(100), width="stretch")
 
-elif page == "Company Benchmarks":
+elif page == "NLP + RAG":
     page_header(
-        "Company benchmarks",
-        "Raw volume first. Normalized views only with caveats.",
-        "Large institutions naturally produce more complaints. The app shows raw volume clearly and only normalizes when a public-company scale proxy exists.",
-    )
-    scale = load_artifact_csv(ARTIFACT_DIR / "sec_company_scale_metrics.csv")
-    bench = company_benchmark(filtered, scale)
-    sec_lineage = load_artifact_csv(SEC_LINEAGE_PATH)
-    if scale.empty:
-        st.markdown("<div class='warning'>SEC scale-normalized metrics are not available in this local build. Run entity resolution, then SEC ingestion with a valid SEC_USER_AGENT and network access.</div>", unsafe_allow_html=True)
-    else:
-        mapped = int(scale.get("cfpb_company_name", pd.Series(dtype=str)).nunique())
-        years = int(sec_lineage.get("fiscal_year", pd.Series(dtype=int)).nunique()) if not sec_lineage.empty else 0
-        cols = st.columns(3)
-        with cols[0]: metric_card("SEC mappings", f"{mapped:,}", "Accepted mapping rows")
-        with cols[1]: metric_card("SEC registrants", f"{sec_lineage.get('sec_cik', pd.Series(dtype=str)).nunique() if not sec_lineage.empty else 0:,}", "With observations")
-        with cols[2]: metric_card("Fiscal years", f"{years:,}", "Observed in lineage")
-    mode = st.radio("View", ["Raw volume", "Normalized view"], horizontal=True)
-    if mode == "Raw volume" or "complaints_per_1b_assets" not in bench:
-        st.plotly_chart(styled_fig(px.bar(bench.head(20), x="raw_complaints", y="company", orientation="h", title="Raw complaint volume"), 560), use_container_width=True)
-    else:
-        st.markdown("<div class='warning'>Assets and revenue are transparent scale proxies, not measures of customer count, market share, consumer harm, or company quality.</div>", unsafe_allow_html=True)
-        metric = st.selectbox("Normalized metric", ["complaints_per_1b_assets", "complaints_per_1b_revenue"])
-        st.plotly_chart(styled_fig(px.bar(bench.dropna(subset=[metric]).head(20), x=metric, y="company", orientation="h", title=metric.replace("_", " ").title()), 560), use_container_width=True)
-    st.dataframe(bench, use_container_width=True)
-    if not sec_lineage.empty:
-        with st.expander("SEC lineage"):
-            st.dataframe(sec_lineage, use_container_width=True)
-
-elif page == "Risk Watch":
-    page_header(
-        "Risk watch",
-        "Spikes, baselines, and investigation leads",
-        "A z-score is not a smoking gun. It is a way to notice when a product, issue, company, or state deserves a human look.",
-    )
-    group_col = st.selectbox("Monitor dimension", ["issue", "product", "company", "state"])
-    spikes = detect_spikes(filtered, group_col=group_col)
-    latest = emerging_issue_score(filtered, group_col=group_col).head(25)
-    st.plotly_chart(styled_fig(px.scatter(latest, x="complaints", y="z_score", size="complaints", color=group_col, title="Latest-month spike score"), 520), use_container_width=True)
-    st.dataframe(latest, use_container_width=True)
-    st.caption("Spike flag uses a z-score >= 2.0 versus the trailing 12-month baseline where enough history exists.")
-
-elif page == "Narrative Topics":
-    page_header(
-        "Narrative topics",
-        "What people are actually writing",
-        "The public narratives are sparse, but they are rich. This page groups repeated language and lets you pull examples instead of staring at a word cloud.",
+        "NLP + GenAI",
+        "Narrative topics and grounded complaint evidence",
+        "This section keeps the GenAI story focused: 5,343 indexed complaint narratives, NMF topic modeling, and grounded RAG retrieval with citations.",
     )
     topics = load_artifact_csv(TOPIC_REGISTRY_PATH)
-    if topics.empty:
-        st.info("Run `python -m src.pipeline` with NLP enabled to generate the topic registry.")
-    else:
-        st.dataframe(topics, use_container_width=True)
-    query = st.text_input("Retrieve complaint evidence", placeholder="payment issue, account restriction, credit reporting dispute")
-    if query:
-        st.dataframe(retrieve_evidence(filtered, query), use_container_width=True)
+    rag_metrics = load_artifact_json(RAG_EVAL_METRICS_PATH)
+    c1, c2, c3 = st.columns(3)
+    with c1: metric_card("Indexed narratives", f"{final_metrics.get('rag_indexed_narratives', 5343):,}", "RAG evidence base")
+    with c2: metric_card("NMF topics", f"{len(topics):,}", "Topic modeling")
+    with c3: metric_card("RAG Recall@5", f"{rag_metrics.get('recall_at_5', 0):.1%}", "Evaluation metric")
+    if not topics.empty:
+        st.subheader("NMF topic summary")
+        st.dataframe(topics, width="stretch")
 
-elif page == "Automation Ideas":
-    page_header(
-        "Automation ideas",
-        "Observed problem first. Tool idea second.",
-        "This page does not start with a wishlist. It starts with repeated complaint patterns and asks whether a human-in-the-loop tool would reduce friction.",
-    )
-    opportunities = load_artifact_csv(AI_OPPORTUNITIES_PATH)
-    if opportunities.empty:
-        opportunities = derive_ai_opportunities(filtered)
-    st.dataframe(opportunities, use_container_width=True)
-    st.caption("Observed evidence is complaint volume and pattern concentration. The AI intervention is a proposed operating response.")
-
-elif page == "Value Realization":
-    page_header(
-        "Value model",
-        "Value realization from observed complaint workload",
-        "Use real complaint volume, then make the assumptions visible: handling time, addressable share, adoption, cost, and success probability.",
-    )
-    product = st.selectbox("Observed complaint segment", ["All"] + sorted(filtered["product"].dropna().unique().tolist()))
-    segment = filtered if product == "All" else filtered[filtered["product"] == product]
-    wages = load_artifact_csv(BLS_WAGE_BENCHMARKS_PATH)
-    if wages.empty:
-        st.markdown("<div class='warning'>No verified BLS wage artifact is present in this local build. The wage below is a user assumption until `python -m src.ingestion.bls_oews` runs successfully.</div>", unsafe_allow_html=True)
-        wage = st.number_input("Hourly wage assumption", min_value=1.0, value=24.0, step=1.0)
-    else:
-        labels = (wages["occupation_code"].astype(str) + " - " + wages["occupation"].astype(str)).tolist()
-        selected = st.selectbox("BLS external wage benchmark", labels)
-        wage = float(wages.loc[labels.index(selected), "mean_hourly_wage"])
-        st.caption("BLS values are external labor-cost benchmarks, not company payroll data.")
-    assumptions = ValueAssumptions(observed_complaints=len(segment), hourly_wage=wage)
-    output = calculate_value(assumptions)
-    cols = st.columns(4)
-    with cols[0]: metric_card("Observed complaints", f"{len(segment):,}", "Observed input")
-    with cols[1]: metric_card("Hours released", f"{output['expected_hours_released']:,.0f}", "Model output")
-    with cols[2]: metric_card("Annual capacity value", money(output["estimated_annual_capacity_value"]), "Model output")
-    with cols[3]: metric_card("3-year net value", money(output["three_year_net_value"]), "Under selected assumptions")
-    st.json(output)
-
-elif page == "Scenario Lab":
-    page_header(
-        "Scenario lab",
-        "What changes the business case?",
-        "Move the assumptions and watch the result change. This is where weak business cases usually reveal themselves.",
-    )
-    base = ValueAssumptions(
-        observed_complaints=st.number_input("Observed complaints", min_value=1, value=int(len(filtered))),
-        hourly_wage=st.number_input("Hourly wage benchmark", min_value=1.0, value=24.0),
-        average_handling_minutes=st.slider("Average handling minutes", 1.0, 90.0, 22.0),
-        ai_addressable_share=st.slider("AI-addressable share", 0.0, 1.0, 0.35),
-        time_reduction=st.slider("Time reduction from AI", 0.0, 1.0, 0.25),
-        adoption_rate=st.slider("Adoption rate", 0.0, 1.0, 0.70),
-        implementation_cost=st.number_input("Implementation cost", min_value=0.0, value=1_250_000.0, step=50_000.0),
-        annual_operating_cost=st.number_input("Annual operating cost", min_value=0.0, value=350_000.0, step=25_000.0),
-        success_probability=st.slider("Success probability", 0.0, 1.0, 0.75),
-    )
-    scenario_df = scenario_table(base)
-    samples = monte_carlo_value(base, simulations=3000, seed=42)
-    mc = monte_carlo_summary(samples)
-    tabs = st.tabs(["Scenarios", "Monte Carlo", "Sensitivity"])
-    with tabs[0]:
-        st.plotly_chart(styled_fig(px.bar(scenario_df, x="scenario", y="three_year_net_value", title="3-year net value by scenario"), 430), use_container_width=True)
-        st.dataframe(scenario_df, use_container_width=True)
-    with tabs[1]:
-        cols = st.columns(4)
-        with cols[0]: metric_card("Median NPV", money(mc["median_npv"]), "P50")
-        with cols[1]: metric_card("P10 NPV", money(mc["p10_npv"]), "Downside")
-        with cols[2]: metric_card("P90 NPV", money(mc["p90_npv"]), "Upside")
-        with cols[3]: metric_card("NPV > 0", f"{mc['probability_npv_positive']:.0%}", "Simulation share")
-        st.plotly_chart(styled_fig(px.histogram(samples, x="npv", nbins=50, title="Monte Carlo NPV distribution"), 430), use_container_width=True)
-        st.caption("Distributions are documented in docs/SCENARIO_METHODOLOGY.md. Modelled value is not realized value.")
-    with tabs[2]:
-        sens = pd.DataFrame(sensitivity(base))
-        st.plotly_chart(styled_fig(px.bar(sens, x="range", y="assumption", orientation="h", title="Tornado sensitivity: 3-year net-value movement"), 470), use_container_width=True)
-        st.dataframe(sens, use_container_width=True)
-
-elif page == "Macro Context":
-    page_header(
-        "Macro context",
-        "Complaint trends beside external macro signals",
-        "FRED is optional here. It only belongs in the analysis if it adds context without pretending to prove causation.",
-    )
-    fred = load_artifact_csv(FRED_OBSERVATIONS_PATH)
-    fred_analysis = load_artifact_csv(FRED_ANALYSIS_PATH)
-    if fred.empty:
-        st.info("No FRED observations are present. Configure FRED_API_KEY and run `python -m src.ingestion.fred` if macro overlays are useful.")
-    else:
-        st.dataframe(fred.tail(1000), use_container_width=True)
-    if not fred_analysis.empty:
-        st.markdown("<div class='warning'>Correlation does not imply causation. These are exploratory context checks only.</div>", unsafe_allow_html=True)
-        st.dataframe(fred_analysis, use_container_width=True)
-
-elif page == "Model Performance":
-    page_header(
-        "Model check",
-        "Narrative routing model performance",
-        "A simple baseline comes first. The model has to beat that before it earns a place in an operations workflow.",
-    )
-    if not MODEL_REPORT_PATH.exists():
-        st.info("Run the NLP pipeline to train and evaluate the narrative classifier.")
-    else:
-        report = json.loads(MODEL_REPORT_PATH.read_text(encoding="utf-8"))
-        if report.get("status") == "trained":
-            cols = st.columns(3)
-            with cols[0]: metric_card("Records", f"{report['records']:,}", "Narratives used")
-            with cols[1]: metric_card("Baseline macro F1", f"{report['baseline_macro_f1']:.3f}", "Most-frequent classifier")
-            with cols[2]: metric_card("Model macro F1", f"{report['model_macro_f1']:.3f}", "TF-IDF + logistic regression")
-        st.json(report)
-    if RAG_EVAL_METRICS_PATH.exists():
-        st.subheader("RAG evaluation")
-        rag_metrics = json.loads(RAG_EVAL_METRICS_PATH.read_text(encoding="utf-8"))
-        cols = st.columns(4)
-        with cols[0]: metric_card("Eval questions", f"{rag_metrics['question_count']:,}", "Grounded analyst questions")
-        with cols[1]: metric_card("Recall@5", f"{rag_metrics['recall_at_5']:.0%}", "Expected evidence in top 5")
-        with cols[2]: metric_card("Recall@10", f"{rag_metrics['recall_at_10']:.0%}", "Expected evidence in top 10")
-        with cols[3]: metric_card("Citation validity", f"{rag_metrics['citation_validity_rate']:.0%}", "Complaint IDs present")
-        st.json(rag_metrics)
-        rag_detail_path = RAG_EVAL_METRICS_PATH.with_suffix(".csv")
-        if rag_detail_path.exists():
-            st.dataframe(pd.read_csv(rag_detail_path), use_container_width=True)
-    elif RAG_EVAL_PATH.exists():
-        st.subheader("Legacy retrieval evaluation")
-        rag = pd.read_csv(RAG_EVAL_PATH)
-        cols = st.columns(3)
-        with cols[0]: metric_card("Eval questions", f"{len(rag):,}", "Seed analyst questions")
-        with cols[1]: metric_card("Citation check", f"{rag['groundedness_gate'].mean():.0%}", "Has complaint IDs")
-        with cols[2]: metric_card("Avg term recall", f"{rag['term_recall'].mean():.0%}", "Expected evidence terms")
-        st.dataframe(rag, use_container_width=True)
-
-elif page == "Governance":
-    page_header(
-        "Governance",
-        "Controls before deployment",
-        "Routing, summarization, and retrieval tools can help. They can also mislead people. This page makes the risks and review rules explicit.",
-    )
-    opportunities = load_artifact_csv(AI_OPPORTUNITIES_PATH)
-    if opportunities.empty:
-        opportunities = derive_ai_opportunities(filtered)
-    catalog = governance_catalog(opportunities)
-    inv = load_artifact_csv(AI_SYSTEM_INVENTORY_PATH)
-    risks = load_artifact_csv(AI_RISK_REGISTER_PATH)
-    controls = load_artifact_csv(GOVERNANCE_CONTROLS_PATH)
-    if inv.empty:
-        inv = ai_system_inventory()
-    if risks.empty:
-        risks = risk_register()
-    if controls.empty:
-        controls = governance_controls()
-    tabs = st.tabs(["System inventory", "Risk register", "Controls", "Opportunity controls"])
-    with tabs[0]:
-        st.dataframe(inv, use_container_width=True)
-    with tabs[1]:
-        st.dataframe(risks.sort_values("severity", ascending=False), use_container_width=True)
-    with tabs[2]:
-        st.dataframe(controls, use_container_width=True)
-    with tabs[3]:
-        st.dataframe(catalog, use_container_width=True)
-    st.caption("NIST AI RMF concepts inform the governance dimensions. This product does not claim compliance certification.")
-
-elif page == "Evidence Search":
-    page_header(
-        "Grounded RAG",
-        "Ask a question. Inspect the answer trail.",
-        "The answer is built from deterministic analytics plus retrieved CFPB complaint narratives. If the evidence is thin, it should say that.",
-    )
-    st.markdown("<div class='warning'>LLMs do not calculate metrics here. Counts, trends, and issue rankings come from local code; generated text must cite complaint evidence or analytics outputs.</div>", unsafe_allow_html=True)
-    if not RAG_INDEX_PATH.exists():
-        st.error("The RAG index is missing. Run `python scripts/build_rag_index.py` from the project folder.")
-        st.stop()
-
+    st.subheader("Grounded RAG assistant")
     question_bank = [
         "What problems are consumers reporting about incorrect credit report information?",
         "What are consumers saying about debt validation?",
-        "What mortgage servicing issues appear in narratives?",
         "What themes show up in credit card payment complaints?",
-        "Which operational problems appear repetitive enough for routing support?",
     ]
-    selected_question = st.selectbox("Question starter", ["Custom question"] + question_bank)
-    default_question = "" if selected_question == "Custom question" else selected_question
-    question = st.text_area("Analyst question", value=default_question, height=95, placeholder="Ask about a product, company, issue, state, or time window.")
-
-    c1, c2, c3 = st.columns(3)
-    with c1:
-        product_filter = st.selectbox("Product filter", [""] + sorted(df["product"].dropna().unique().tolist()))
-        state_filter = st.selectbox("State filter", [""] + sorted(df["state"].dropna().unique().tolist()))
-    with c2:
-        top_companies = df["company"].value_counts().head(250).index.tolist()
-        company_filter = st.selectbox("Company filter", [""] + sorted(top_companies))
-        issue_filter = st.selectbox("Issue filter", [""] + sorted(df["issue"].dropna().unique().tolist()))
-    with c3:
-        min_date, max_date = pd.to_datetime(df["date_received"]).min().date(), pd.to_datetime(df["date_received"]).max().date()
-        rag_dates = st.date_input("Evidence date range", value=(min_date, max_date), min_value=min_date, max_value=max_date)
-        top_k = st.slider("Evidence records", min_value=3, max_value=12, value=8)
-        use_llm = st.checkbox("Use configured LLM", value=False, help="Uses OPENAI_API_KEY or ANTHROPIC_API_KEY only when LLM_PROVIDER is set. Otherwise the app uses the deterministic grounded fallback.")
-
-    if question:
-        date_start = date_end = None
-        if isinstance(rag_dates, tuple) and len(rag_dates) == 2:
-            date_start, date_end = str(rag_dates[0]), str(rag_dates[1])
-        filters = RagFilters(
-            company=company_filter or None,
-            product=product_filter or None,
-            issue=issue_filter or None,
-            state=state_filter or None,
-            date_start=date_start,
-            date_end=date_end,
-        )
-        try:
-            context = build_context(question, df, filters=filters, top_k=top_k)
-            result = generate_answer(context, use_llm=use_llm)
-        except Exception as exc:
-            st.error(f"RAG failed: {exc}")
-            st.stop()
-
-        st.subheader("Grounded answer")
+    question = st.selectbox("Question", question_bank)
+    product_filter = st.selectbox("Optional product filter", [""] + sorted(df["product"].dropna().unique().tolist()))
+    filters = RagFilters(product=product_filter or None)
+    if st.button("Run analysis", type="primary"):
+        context = build_context(question, df, filters=filters, top_k=5)
+        result = generate_answer(context, use_llm=False)
         st.markdown(result["answer"])
-        st.caption(f"Answer mode: {result['mode']}")
-
         evidence = result["evidence"]
-        st.subheader("Retrieved complaint evidence")
-        if evidence.empty:
-            st.info("No matching narratives were retrieved for these filters.")
-        else:
-            visible_cols = ["citation", "date_received", "company", "product", "issue", "state", "hybrid_score", "clean_narrative"]
-            st.dataframe(evidence[visible_cols], use_container_width=True)
+        if not evidence.empty:
+            visible_cols = ["citation", "date_received", "company", "product", "issue", "clean_narrative"]
+            st.dataframe(evidence[visible_cols], width="stretch")
 
-        st.subheader("Deterministic analytics used")
-        st.json(result["analytics"])
-
-        with st.expander("Trace: filters, retrieval, and prompt context"):
-            st.json(result["trace"])
-            st.text_area("Prompt context sent to LLM or fallback", value=result["prompt_context"], height=260)
-
-elif page == "Data Notes":
+elif page == "Model Evidence":
     page_header(
-        "Data notes",
-        "Where the numbers came from",
-        "Source, field, transformation, calculation, refresh, and limitation details. Boring on purpose. Useful in interviews.",
+        "Model Evidence",
+        "Routing model and project proof",
+        "This section summarizes the measurable parts of the project that belong on a Data Analytics resume.",
     )
-    st.subheader("Source metadata")
-    st.json(metadata)
-    if final_metrics:
-        st.subheader("Measured release evidence")
-        st.json(final_metrics)
-    st.subheader("Lineage")
-    st.dataframe(lineage_table(), use_container_width=True)
-    if QUALITY_PROFILE_PATH.exists():
-        st.subheader("Data quality profile")
-        st.dataframe(pd.read_csv(QUALITY_PROFILE_PATH), use_container_width=True)
+    report = load_artifact_json(MODEL_REPORT_PATH)
+    rag_metrics = load_artifact_json(RAG_EVAL_METRICS_PATH)
+    c1, c2, c3, c4 = st.columns(4)
+    with c1: metric_card("Routing classes", f"{report.get('classes', 10):,}", "Complaint classification")
+    with c2: metric_card("Macro F1", f"{report.get('model_macro_f1', 0):.3f}", "TF-IDF Logistic Regression")
+    with c3: metric_card("Baseline F1", f"{report.get('baseline_macro_f1', 0):.3f}", "Comparison model")
+    with c4: metric_card("RAG citation validity", f"{rag_metrics.get('citation_validity_rate', 0):.0%}", "Grounded retrieval")
+    proof = pd.DataFrame(
+        [
+            {"Resume claim": "250K CFPB complaints", "Project evidence": "data/processed/cfpb_complaints.parquet"},
+            {"Resume claim": "1,383 companies", "Project evidence": "docs/FINAL_VERIFIED_METRICS.md"},
+            {"Resume claim": "12 products and 87 issues", "Project evidence": "docs/FINAL_VERIFIED_METRICS.md"},
+            {"Resume claim": "5,343 indexed narratives", "Project evidence": "data/artifacts/rag_hybrid_index.json"},
+            {"Resume claim": "10-class routing model, 0.729 macro F1", "Project evidence": "data/artifacts/model_report.json"},
+        ]
+    )
+    st.subheader("Resume evidence map")
+    st.dataframe(proof, width="stretch")

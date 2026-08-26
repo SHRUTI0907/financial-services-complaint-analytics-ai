@@ -1,35 +1,37 @@
 # Resume Evidence
 
-## Verified Facts
+This file keeps the resume story tied to verified project outputs.
 
-- Analyzed 250,000 real CFPB complaints from 2016-03-02 to 2026-08-09.
-- Covered 1,383 companies, 12 products, and 87 issues.
-- Processed 5,386 public complaint narratives and indexed 5,343 for RAG.
-- Built 12 topic rows from public narratives.
-- Trained a routing classifier on 5,310 narratives; macro F1 improved from 0.052 to 0.729.
-- Evaluated RAG on 45 questions; Recall@5 97.8%; citation validity 100.0%.
-- Built a value model with 5,000 Monte Carlo simulations.
-- Governed 6 AI systems with 14 risks and 12 controls.
+## Recommended Title
 
-## Ranked Resume Bullet Alternatives
+**Financial Services Complaint Analytics & AI Decision Support Platform**  
+*Data Analytics, NLP & GenAI*
 
-1. Built a CFPB complaint intelligence app analyzing 250,000 real financial-services complaints, combining trend analytics, topic modeling, routing classification, and grounded RAG to surface operational risk themes with cited evidence.
+## Verified Resume Claims
 
-2. Developed a grounded analyst-assistant layer over 5,343 public complaint narratives with hybrid retrieval, metadata filters, deterministic analytics context, and 45-question evaluation achieving 97.8% Recall@5 and 100.0% citation validity.
+| Resume claim | Verified value | Evidence |
+|---|---:|---|
+| CFPB complaints analyzed | 250,000 | `data/processed/cfpb_complaints.parquet` |
+| Companies analyzed | 1,383 | `docs/FINAL_VERIFIED_METRICS.md` |
+| Products evaluated | 12 | `docs/FINAL_VERIFIED_METRICS.md` |
+| Issues evaluated | 87 | `docs/FINAL_VERIFIED_METRICS.md` |
+| Public narratives processed | 5,386 | `docs/FINAL_VERIFIED_METRICS.md` |
+| RAG-indexed narratives | 5,343 | `data/artifacts/rag_hybrid_index.json` |
+| Routing model classes | 10 | `data/artifacts/model_report.json` |
+| Routing model macro F1 | 0.729 | `data/artifacts/model_report.json` |
 
-3. Designed an AI value-realization lab using observed complaint volume, explicit business assumptions, scenario analysis, sensitivity testing, and 5,000 Monte Carlo simulations to estimate capacity value without claiming realized savings.
+## Resume Bullets
 
-4. Trained and evaluated a complaint-routing classifier on 5,310 CFPB narratives, improving macro F1 from 0.052 baseline to 0.729 while documenting governance controls and limitations.
+- Analyzed 250K real CFPB complaints across 1,383 companies using Python, Pandas, and Streamlit to evaluate complaint trends across 12 products and 87 issue categories.
+- Built NLP and GenAI features over 5,343 indexed complaint narratives, combining NMF topic modeling, grounded RAG, and a 10-class routing model achieving 0.729 macro F1.
 
-5. Built an AI governance layer for 6 implemented AI systems, documenting 14 risks, 12 controls, monitoring metrics, and human-review triggers using NIST AI RMF concepts.
+## ATS Keywords
 
-## Best Two
-
-Use bullets 1 and 2 for Business Analyst / AI Business Analyst roles. Use bullet 3 if the role emphasizes business-case modeling.
+Python, Pandas, Streamlit, Data Analytics, Financial Services, CFPB, Trend Analysis, Anomaly Detection, NLP, Topic Modeling, NMF, RAG, GenAI, Classification, Logistic Regression, TF-IDF, Model Evaluation, Macro F1, Dashboard.
 
 ## Wording To Avoid
 
-- Do not say millions of complaints.
-- Do not claim SEC/BLS/FRED integration until live external artifacts exist.
-- Do not say AI saved money.
-- Do not say the assistant proves misconduct.
+- Do not say the project analyzed millions of complaints.
+- Do not say the project proves regulatory misconduct.
+- Do not say the model automates final complaint decisions.
+- Do not claim financial savings or business impact that was not measured from real company data.

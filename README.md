@@ -1,144 +1,95 @@
-# CFPB Complaint Intelligence + AI Governance Lab
+# Financial Services Complaint Analytics & AI Decision Support Platform
 
-This is a portfolio project for business analytics, AI transformation, and decision-support roles. It turns real CFPB consumer complaint records into an analyst workspace for complaint trends, operational friction, topic discovery, routing-model evaluation, grounded RAG, value modeling, and AI governance.
+A Streamlit portfolio project that analyzes real Consumer Financial Protection Bureau complaint data and turns it into a clean analytics workspace for financial-services complaint patterns, narrative themes, grounded evidence search, and complaint-routing model performance.
 
-It is not a fake consulting mockup. The current local release is built on a capped official CFPB extract of 250,000 real complaint records.
+The project is intentionally focused on the evidence used in the resume bullets: Python, Pandas, Streamlit, trend analysis, anomaly detection, NLP, grounded RAG, and a 10-class routing model.
 
-## What This Solves
+## What It Does
 
-Financial-services teams need to know where consumers are seeing repeated friction, which complaint themes are rising, where AI support might help, and what controls would be required before using AI in a real workflow.
+- Analyzes 250,000 real CFPB complaints across 1,383 companies.
+- Evaluates 12 financial products and 87 issue categories.
+- Surfaces trend and anomaly signals for complaint patterns.
+- Uses NMF topic modeling and grounded RAG over public complaint narratives.
+- Evaluates a 10-class complaint-routing model with 0.729 macro F1.
 
-This project answers those questions with:
+## Data
 
-- observed complaint data first;
-- deterministic metrics before generated text;
-- cited complaint evidence for analyst answers;
-- scenario/value modeling with visible assumptions;
-- governance tied to the actual AI systems in the repo.
-
-## Real-World Data
+Source: [CFPB Consumer Complaint Database](https://www.consumerfinance.gov/data-research/consumer-complaints/)
 
 Verified local release:
 
 | Metric | Value |
 |---|---:|
-| CFPB records | 250,000 |
-| Date range | 2016-03-02 to 2026-08-09 |
+| CFPB complaints | 250,000 |
 | Companies | 1,383 |
 | Products | 12 |
 | Issues | 87 |
 | Public narratives | 5,386 |
 | RAG-indexed narratives | 5,343 |
+| Date range | 2016-03-02 to 2026-08-09 |
 
-SEC, BLS, and FRED pipelines are implemented but were not live-verified in this sandbox because external network requests were blocked. The app does not claim completed SEC/BLS/FRED enrichment until those artifacts exist.
+## App Sections
 
-## Key Capabilities
-
-- CFPB ingestion into Parquet.
-- Data-quality and lineage artifacts.
-- Complaint trend, product, issue, company, response, and state analysis.
-- Emerging-risk monitor using transparent z-score logic.
-- NMF topic modeling over public narratives.
-- Complaint-routing classifier using TF-IDF + Logistic Regression.
-- Grounded RAG over public CFPB narratives with metadata filters and complaint citations.
-- Optional LLM answer layer with deterministic no-key fallback.
-- Scenario value model with NPV, ROI, payback, sensitivity, and Monte Carlo.
-- AI governance inventory, risk register, controls, and model cards.
+| Section | Purpose |
+|---|---|
+| Overview | Portfolio-level KPIs and complaint volume trends |
+| Complaint Patterns | Product and issue analysis with anomaly signals |
+| Company View | Company-level complaint volume and product mix |
+| NLP + RAG | NMF topics and grounded narrative evidence |
+| Model Evidence | Routing model metrics and resume proof map |
 
 ## Measured Results
 
 | Metric | Value |
 |---|---:|
-| Routing baseline macro F1 | 0.052 |
+| Routing model classes | 10 |
 | Routing model macro F1 | 0.729 |
+| Baseline macro F1 | 0.052 |
 | RAG evaluation questions | 45 |
 | RAG Recall@5 | 97.8% |
-| RAG Recall@10 | 97.8% |
 | RAG citation validity | 100.0% |
-| Monte Carlo simulations | 5,000 |
-| Governed AI systems | 6 |
-| Governance risks | 14 |
-| Governance controls | 12 |
 | Tests | 25 passing |
 
-Full metric provenance is in `docs/FINAL_VERIFIED_METRICS.md`.
+Detailed metric provenance is in `docs/FINAL_VERIFIED_METRICS.md`.
 
 ## Architecture
 
 ```text
 Official CFPB data
-  -> ingestion and normalized Parquet
-  -> quality checks and lineage
-  -> deterministic analytics
-  -> NLP topics and routing model
+  -> Parquet analytics dataset
+  -> Python/Pandas transformations
+  -> trend and anomaly analysis
+  -> NMF topic modeling
+  -> TF-IDF routing model
   -> hybrid RAG index
-  -> grounded answer layer
-  -> value modeling and governance
-  -> Streamlit executive app
+  -> Streamlit decision-support app
 ```
 
-Optional future live enrichments:
-
-```text
-SEC Company Facts -> audited entity map -> scale-normalized complaint view
-BLS OEWS -> wage benchmark -> value model
-FRED -> macro context overlay
-```
-
-## How To Run
+## Run Locally
 
 ```bash
+cd /Users/sarvesh/Documents/Project_resume
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-python -m src.pipeline --max-records 250000
-python scripts/build_rag_index.py
-python scripts/evaluate_rag.py
-python scripts/build_entity_resolution.py
-python scripts/build_governance_artifacts.py
-python scripts/run_value_analysis.py
-python scripts/final_audit.py
 python3 -m streamlit run app.py
 ```
 
-## Optional External Enrichment
+The processed CFPB release artifacts are included in the repository so the app can run directly after installing requirements.
 
-SEC:
+## Streamlit Cloud
 
-```bash
-export SEC_USER_AGENT="Your Name your.email@example.com"
-python -m src.ingestion.sec_edgar --max-companies 10
-```
+Use these deploy settings:
 
-BLS:
-
-```bash
-python -m src.ingestion.bls_oews
-```
-
-FRED:
-
-```bash
-export FRED_API_KEY=...
-python -m src.ingestion.fred
-```
-
-## Methodology
-
-The project separates:
-
-- observed data: CFPB complaint records;
-- external benchmarks: SEC/BLS/FRED only after live artifacts exist;
-- user assumptions: handling time, adoption, time reduction, costs, success probability;
-- model outputs: estimated capacity value, NPV, ROI, payback, and probability ranges.
-
-The LLM does not calculate business metrics. It can only draft from retrieved evidence and deterministic analytics context.
+| Setting | Value |
+|---|---|
+| Repository | `SHRUTI0907/financial-services-complaint-analytics-ai` |
+| Branch | `main` |
+| Main file path | `app.py` |
 
 ## Limitations
 
-- CFPB complaints are not a full sample of all consumer experiences.
-- Public narratives are sparse and redacted.
-- SEC assets/revenue are imperfect scale proxies and are not customer count.
-- BLS wages are external benchmarks, not company payroll data.
-- Scenario values are not realized savings.
-- Macro correlations, if FRED is enabled, do not imply causation.
+- CFPB complaints are consumer-submitted records, not a complete measure of all customer experience.
+- Public narratives are sparse and may be redacted.
+- Company comparisons are raw complaint counts, not market-share-adjusted rates.
+- RAG answers are grounded in retrieved complaint narratives and should not be treated as legal or regulatory conclusions.

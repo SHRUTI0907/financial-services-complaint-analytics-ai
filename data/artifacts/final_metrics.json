@@ -52,7 +52,7 @@
   "governed_systems": 6,
   "governance_risks": 14,
   "monte_carlo_simulations": 5000,
-  "dashboard_pages": 14,
+  "dashboard_pages": 5,
   "test_count": 25,
   "test_pass_count": 25
 }
