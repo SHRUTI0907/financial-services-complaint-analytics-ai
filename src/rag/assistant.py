@@ -152,6 +152,8 @@ def generate_answer(context: dict[str, object], use_llm: bool = True) -> dict[st
         "answer": answer,
         "mode": mode,
         "citations": evidence["citation"].head(8).tolist() if not evidence.empty else [],
+        "evidence": evidence,
+        "analytics": context["analytics"],
         "prompt_context": prompt,
         "trace": context["trace"],
     }
@@ -161,6 +163,4 @@ def answer_question(question: str, filters: RagFilters | None = None, top_k: int
     complaints = pd.read_parquet(COMPLAINTS_PARQUET)
     context = build_context(question, complaints, filters, top_k)
     result = generate_answer(context, use_llm=use_llm)
-    result["evidence"] = context["evidence"]
-    result["analytics"] = context["analytics"]
     return result

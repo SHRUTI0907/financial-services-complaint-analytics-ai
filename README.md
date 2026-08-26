@@ -33,7 +33,7 @@ Verified local release:
 | Overview | Complaint KPIs and volume trends |
 | Complaint Patterns | Product and issue analysis with anomaly signals |
 | Company View | Company-level complaint volume and product mix |
-| NLP + RAG | NMF topics and grounded narrative evidence |
+| Narrative Search | NMF topics and grounded narrative evidence |
 | Model Performance | Routing model and retrieval evaluation |
 
 ## Measured Results

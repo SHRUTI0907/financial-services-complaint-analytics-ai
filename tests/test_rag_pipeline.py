@@ -99,6 +99,8 @@ class RagPipelineTests(unittest.TestCase):
             self.assertEqual(answer["mode"], "deterministic_no_key_fallback")
             self.assertIn("[CFPB Complaint 1]", answer["answer"])
             self.assertIn("[Analytics:", answer["answer"])
+            self.assertIn("evidence", answer)
+            self.assertEqual(len(answer["evidence"]), 1)
 
 
 if __name__ == "__main__":

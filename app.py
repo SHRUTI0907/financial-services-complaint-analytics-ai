@@ -300,8 +300,9 @@ def styled_fig(fig, height: int = 390):
         colorway=PLOT_COLORS,
         font={"family": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif", "color": "#2a2925"},
         title={"font": {"size": 18, "color": "#12120f"}, "x": 0.02, "xanchor": "left"},
-        margin={"l": 18, "r": 18, "t": 58, "b": 22},
-        legend={"orientation": "h", "yanchor": "bottom", "y": 1.02, "xanchor": "right", "x": 1},
+        margin={"l": 18, "r": 18, "t": 72, "b": 82},
+        legend={"orientation": "h", "yanchor": "top", "y": -0.16, "xanchor": "left", "x": 0},
+        legend_title_text="",
     )
     fig.update_xaxes(showgrid=True, gridcolor="rgba(103,107,97,.16)", zeroline=False, title_font={"size": 12})
     fig.update_yaxes(showgrid=True, gridcolor="rgba(103,107,97,.16)", zeroline=False, title_font={"size": 12})
@@ -368,7 +369,7 @@ page = st.sidebar.radio(
         "Overview",
         "Complaint Patterns",
         "Company View",
-        "NLP + RAG",
+        "Narrative Search",
         "Model Performance",
     ],
 )
@@ -430,15 +431,15 @@ elif page == "Company View":
         st.plotly_chart(styled_fig(px.bar(top_categories(company_df, "product", 8), x="complaints", y="product", orientation="h", title="Product Mix"), 390), width="stretch")
     st.dataframe(bench.head(100), width="stretch")
 
-elif page == "NLP + RAG":
+elif page == "Narrative Search":
     page_header(
-        "NLP + GenAI",
-        "Narrative topics and grounded complaint evidence",
+        "Narratives",
+        "Complaint themes and cited narrative search",
     )
     topics = load_artifact_csv(TOPIC_REGISTRY_PATH)
     rag_metrics = load_artifact_json(RAG_EVAL_METRICS_PATH)
     c1, c2, c3 = st.columns(3)
-    with c1: metric_card("Indexed narratives", f"{final_metrics.get('rag_indexed_narratives', 5343):,}", "RAG evidence base")
+    with c1: metric_card("Indexed narratives", f"{final_metrics.get('rag_indexed_narratives', 5343):,}", "Searchable complaint text")
     with c2: metric_card("NMF topics", f"{len(topics):,}", "Topic modeling")
     with c3: metric_card("RAG Recall@5", f"{rag_metrics.get('recall_at_5', 0):.1%}", "Evaluation metric")
     if not topics.empty:
@@ -458,7 +459,7 @@ elif page == "NLP + RAG":
         context = build_context(question, df, filters=filters, top_k=5)
         result = generate_answer(context, use_llm=False)
         st.markdown(result["answer"])
-        evidence = result["evidence"]
+        evidence = result.get("evidence", context["evidence"])
         if not evidence.empty:
             visible_cols = ["citation", "date_received", "company", "product", "issue", "clean_narrative"]
             st.dataframe(evidence[visible_cols], width="stretch")
