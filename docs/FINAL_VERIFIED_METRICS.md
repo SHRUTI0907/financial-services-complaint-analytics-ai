@@ -1,6 +1,6 @@
 # Final Verified Metrics
 
-These are the metrics used in the simplified portfolio release.
+These are the verified metrics for the current release.
 
 | Metric | Verified value | Provenance |
 |---|---:|---|

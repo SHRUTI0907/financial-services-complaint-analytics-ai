@@ -308,10 +308,11 @@ def styled_fig(fig, height: int = 390):
     return fig
 
 
-def page_header(kicker: str, title: str, body: str) -> None:
+def page_header(kicker: str, title: str, body: str = "") -> None:
     st.markdown(f"<div class='eyebrow'>{kicker}</div>", unsafe_allow_html=True)
     st.title(title)
-    st.markdown(f"<div class='page-subtitle'>{body}</div>", unsafe_allow_html=True)
+    if body:
+        st.markdown(f"<div class='page-subtitle'>{body}</div>", unsafe_allow_html=True)
 
 
 def metric_card(label: str, value: str, note: str = "") -> None:
@@ -351,7 +352,7 @@ def sidebar_filters(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def empty_state() -> None:
-    st.error("Processed CFPB data artifact not found. This deployment expects `data/processed/cfpb_complaints.parquet` to be included.")
+    st.error("Processed CFPB data artifact not found.")
 
 
 df = load_complaints()
@@ -368,7 +369,7 @@ page = st.sidebar.radio(
         "Complaint Patterns",
         "Company View",
         "NLP + RAG",
-        "Model Evidence",
+        "Model Performance",
     ],
 )
 
@@ -378,7 +379,6 @@ if page == "Overview":
     page_header(
         "Overview",
         "Financial Services Complaint Analytics & AI Decision Support Platform",
-        "A market-ready Streamlit analytics project built on real CFPB complaint data, focused on complaint patterns, NLP evidence, and model performance.",
     )
     kpi = kpi_summary(filtered)
     signal_strip(
@@ -396,13 +396,11 @@ if page == "Overview":
         st.plotly_chart(styled_fig(px.line(monthly, x="month", y="complaints", title="Complaint Volume Over Time"), 430), width="stretch")
     with right:
         st.plotly_chart(styled_fig(px.bar(top_categories(filtered, "product", 10), x="complaints", y="product", orientation="h", title="Top Products"), 430), width="stretch")
-    st.markdown("<div class='warning'>Source: official CFPB Consumer Complaint Database. Metrics are calculated from the local processed CFPB dataset included with this repo.</div>", unsafe_allow_html=True)
 
 elif page == "Complaint Patterns":
     page_header(
         "Analytics",
         "Products, issues, trends, and anomaly signals",
-        "This section supports the resume claim around 12 products, 87 issue categories, trend analysis, and anomaly detection.",
     )
     dimension = st.selectbox("Analyze by", ["product", "issue"])
     left, right = st.columns([1.15, 1])
@@ -420,7 +418,6 @@ elif page == "Company View":
     page_header(
         "Companies",
         "Complaint volume across 1,383 companies",
-        "Company analysis is shown as raw CFPB complaint volume, which keeps the comparison simple and transparent.",
     )
     bench = company_benchmark(filtered, pd.DataFrame())
     left, right = st.columns([1.15, 1])
@@ -437,7 +434,6 @@ elif page == "NLP + RAG":
     page_header(
         "NLP + GenAI",
         "Narrative topics and grounded complaint evidence",
-        "This section keeps the GenAI story focused: 5,343 indexed complaint narratives, NMF topic modeling, and grounded RAG retrieval with citations.",
     )
     topics = load_artifact_csv(TOPIC_REGISTRY_PATH)
     rag_metrics = load_artifact_json(RAG_EVAL_METRICS_PATH)
@@ -449,16 +445,16 @@ elif page == "NLP + RAG":
         st.subheader("NMF topic summary")
         st.dataframe(topics, width="stretch")
 
-    st.subheader("Grounded RAG assistant")
+    st.subheader("Narrative search")
     question_bank = [
         "What problems are consumers reporting about incorrect credit report information?",
         "What are consumers saying about debt validation?",
         "What themes show up in credit card payment complaints?",
     ]
     question = st.selectbox("Question", question_bank)
-    product_filter = st.selectbox("Optional product filter", [""] + sorted(df["product"].dropna().unique().tolist()))
+    product_filter = st.selectbox("Product filter", [""] + sorted(df["product"].dropna().unique().tolist()))
     filters = RagFilters(product=product_filter or None)
-    if st.button("Run analysis", type="primary"):
+    if st.button("Search narratives", type="primary"):
         context = build_context(question, df, filters=filters, top_k=5)
         result = generate_answer(context, use_llm=False)
         st.markdown(result["answer"])
@@ -467,11 +463,10 @@ elif page == "NLP + RAG":
             visible_cols = ["citation", "date_received", "company", "product", "issue", "clean_narrative"]
             st.dataframe(evidence[visible_cols], width="stretch")
 
-elif page == "Model Evidence":
+elif page == "Model Performance":
     page_header(
-        "Model Evidence",
-        "Routing model and project proof",
-        "This section summarizes the measurable parts of the project that belong on a Data Analytics resume.",
+        "Model Performance",
+        "Routing model and retrieval evaluation",
     )
     report = load_artifact_json(MODEL_REPORT_PATH)
     rag_metrics = load_artifact_json(RAG_EVAL_METRICS_PATH)
@@ -480,14 +475,3 @@ elif page == "Model Evidence":
     with c2: metric_card("Macro F1", f"{report.get('model_macro_f1', 0):.3f}", "TF-IDF Logistic Regression")
     with c3: metric_card("Baseline F1", f"{report.get('baseline_macro_f1', 0):.3f}", "Comparison model")
     with c4: metric_card("RAG citation validity", f"{rag_metrics.get('citation_validity_rate', 0):.0%}", "Grounded retrieval")
-    proof = pd.DataFrame(
-        [
-            {"Resume claim": "250K CFPB complaints", "Project evidence": "data/processed/cfpb_complaints.parquet"},
-            {"Resume claim": "1,383 companies", "Project evidence": "docs/FINAL_VERIFIED_METRICS.md"},
-            {"Resume claim": "12 products and 87 issues", "Project evidence": "docs/FINAL_VERIFIED_METRICS.md"},
-            {"Resume claim": "5,343 indexed narratives", "Project evidence": "data/artifacts/rag_hybrid_index.json"},
-            {"Resume claim": "10-class routing model, 0.729 macro F1", "Project evidence": "data/artifacts/model_report.json"},
-        ]
-    )
-    st.subheader("Resume evidence map")
-    st.dataframe(proof, width="stretch")

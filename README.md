@@ -1,8 +1,6 @@
 # Financial Services Complaint Analytics & AI Decision Support Platform
 
-A Streamlit portfolio project that analyzes real Consumer Financial Protection Bureau complaint data and turns it into a clean analytics workspace for financial-services complaint patterns, narrative themes, grounded evidence search, and complaint-routing model performance.
-
-The project is intentionally focused on the evidence used in the resume bullets: Python, Pandas, Streamlit, trend analysis, anomaly detection, NLP, grounded RAG, and a 10-class routing model.
+An interactive analytics application for exploring Consumer Financial Protection Bureau complaint data across companies, products, issues, narrative themes, and model outputs.
 
 ## What It Does
 
@@ -32,11 +30,11 @@ Verified local release:
 
 | Section | Purpose |
 |---|---|
-| Overview | Portfolio-level KPIs and complaint volume trends |
+| Overview | Complaint KPIs and volume trends |
 | Complaint Patterns | Product and issue analysis with anomaly signals |
 | Company View | Company-level complaint volume and product mix |
 | NLP + RAG | NMF topics and grounded narrative evidence |
-| Model Evidence | Routing model metrics and resume proof map |
+| Model Performance | Routing model and retrieval evaluation |
 
 ## Measured Results
 
@@ -68,14 +66,14 @@ Official CFPB data
 ## Run Locally
 
 ```bash
-cd /Users/sarvesh/Documents/Project_resume
+cd financial-services-complaint-analytics-ai
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 python3 -m streamlit run app.py
 ```
 
-The processed CFPB release artifacts are included in the repository so the app can run directly after installing requirements.
+The processed CFPB release artifacts are included so the app can run after installing requirements.
 
 ## Streamlit Cloud
 
