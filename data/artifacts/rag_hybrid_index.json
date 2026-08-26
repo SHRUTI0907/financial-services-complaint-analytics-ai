@@ -1,0 +1,13 @@
+{
+  "indexed_narratives": 5343,
+  "embedding_model": "local_lsa_tfidf_svd_128",
+  "retrieval_methods": [
+    "tfidf_lexical",
+    "lsa_dense",
+    "metadata_filter",
+    "rank_fusion"
+  ],
+  "index_path": "/Users/sarvesh/Documents/Project_resume/data/artifacts/rag_hybrid_index.joblib",
+  "metadata_path": "/Users/sarvesh/Documents/Project_resume/data/artifacts/rag_index_metadata.parquet",
+  "created_at_utc": "2026-08-09T23:04:50.196068+00:00"
+}

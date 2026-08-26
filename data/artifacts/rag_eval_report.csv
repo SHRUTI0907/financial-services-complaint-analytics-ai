@@ -1,0 +1,13 @@
+question_id,question,retrieved_records,has_citable_complaint_ids,term_recall,groundedness_gate
+Q001,What evidence is there for payment processing complaints?,5,True,1.0,True
+Q002,Which narratives mention account closures or restrictions?,5,True,0.6666666666666666,True
+Q003,Find complaint evidence related to credit reporting disputes.,5,True,0.6666666666666666,True
+Q004,Show evidence for fraud or unauthorized transaction themes.,5,True,1.0,True
+Q005,What evidence supports servicing delay problems?,5,True,1.0,True
+Q006,Find examples involving fees and unexplained charges.,5,True,1.0,True
+Q007,Which complaint narratives mention document or verification problems?,5,True,0.0,True
+Q008,Show evidence of customer support escalation failures.,5,True,0.6666666666666666,True
+Q009,Find mortgage-related escrow complaint evidence.,5,True,1.0,True
+Q010,Find debt collection communication complaint evidence.,5,True,1.0,True
+Q011,Retrieve evidence about disputes not being resolved.,5,True,1.0,True
+Q012,Find evidence about identity theft or account fraud.,5,True,0.6666666666666666,True

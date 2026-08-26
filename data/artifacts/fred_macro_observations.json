@@ -1,0 +1,6 @@
+{
+  "enabled": false,
+  "reason": "FRED_API_KEY is not configured.",
+  "source": "Federal Reserve Bank of St. Louis FRED",
+  "output_path": "/Users/sarvesh/Documents/Project_resume/data/artifacts/fred_macro_observations.csv"
+}

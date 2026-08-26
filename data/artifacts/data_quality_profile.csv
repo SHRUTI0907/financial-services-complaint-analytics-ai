@@ -1,0 +1,19 @@
+field,records,missing_count,missing_rate,unique_values,example_non_null
+date_received,250000,0,0.0,232,2025-06-04 00:00:00
+product,250000,0,0.0,12,Credit reporting or other personal consumer reports
+sub_product,250000,0,0.0,54,Credit reporting
+issue,250000,0,0.0,87,Incorrect information on your report
+sub_issue,250000,3188,0.0128,198,Account information incorrect
+consumer_complaint_narrative,250000,244614,0.9785,4907,This account was made without my consent back in 2016. I contacted XXXXXXXX XXXX XXXX multiple times to settle this account because it was never me who opened t
+company_public_response,250000,131175,0.5247,9,Company has responded to the consumer and the CFPB and chooses not to provide a public response
+company,250000,0,0.0,1383,"TRANSUNION INTERMEDIATE HOLDINGS, INC."
+state,250000,337,0.0013,60,NC
+zip_code,250000,106,0.0004,12863,28043
+tags,250000,244584,0.9783,3,Servicemember
+consumer_consent_provided,250000,250000,1.0,0,
+submitted_via,250000,0,0.0,4,Web
+date_sent_to_company,250000,0,0.0,214,2025-06-04 00:00:00
+company_response_to_consumer,250000,0,0.0,5,Closed with non-monetary relief
+timely_response,250000,0,0.0,2,Yes
+consumer_disputed,250000,250000,1.0,0,
+complaint_id,250000,0,0.0,250000,13896338

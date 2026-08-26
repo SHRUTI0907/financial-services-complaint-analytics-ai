@@ -1,0 +1,36 @@
+sources:
+  cfpb_complaints:
+    source_name: CFPB Consumer Complaint Database
+    agency: Consumer Financial Protection Bureau
+    dataset: Consumer complaints about financial products and services
+    retrieval_method: Official CFPB bulk CSV download or search API
+    bulk_csv_zip_url: https://files.consumerfinance.gov/ccdb/complaints.csv.zip
+    api_documentation: https://cfpb.github.io/api/ccdb/api.html
+    field_reference: https://www.consumerfinance.gov/data-research/consumer-complaints/
+    refresh_frequency: Daily source updates; local refresh user-triggered
+    public_use_note: Public complaint records published by CFPB after eligibility rules and narrative redaction
+  sec_edgar_companyfacts:
+    source_name: SEC EDGAR Companyfacts
+    agency: U.S. Securities and Exchange Commission
+    dataset: XBRL Company Facts API
+    retrieval_method: Official data.sec.gov companyfacts JSON by CIK
+    api_documentation: https://www.sec.gov/search-filings/edgar-application-programming-interfaces
+    refresh_frequency: SEC API updates throughout the day; bulk archive nightly
+    public_use_note: Public company filings; automated access should use a descriptive User-Agent
+  bls_oews:
+    source_name: BLS Occupational Employment and Wage Statistics
+    agency: U.S. Bureau of Labor Statistics
+    dataset: National OEWS wage estimates
+    retrieval_method: Official BLS OEWS downloadable files
+    default_download_url: https://www.bls.gov/oes/special.requests/oesm25nat.zip
+    documentation: https://www.bls.gov/oes/oes_doc.htm
+    refresh_frequency: Annual OEWS release
+    public_use_note: External wage benchmark only; not company-specific labor cost
+  fred_optional:
+    source_name: FRED
+    agency: Federal Reserve Bank of St. Louis
+    dataset: Optional macroeconomic series
+    retrieval_method: FRED API when key is supplied
+    documentation: https://fred.stlouisfed.org/docs/api/fred/
+    refresh_frequency: Series-dependent
+    public_use_note: Used only for context and correlation, not causal claims

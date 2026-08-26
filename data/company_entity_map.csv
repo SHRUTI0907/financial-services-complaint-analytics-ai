@@ -1,0 +1,16 @@
+cfpb_company_name,canonical_company_name,sec_cik,ticker,match_method,confidence,manual_review_flag,notes
+JPMORGAN CHASE & CO.,JPMorgan Chase & Co.,0000019617,JPM,manual_seed_sec_cik_ticker,0.98,false,Large bank holding company; CFPB subsidiaries may appear separately.
+BANK OF AMERICA, NATIONAL ASSOCIATION,Bank of America Corporation,0000070858,BAC,manual_parent_mapping,0.95,true,Maps bank entity to public parent; use with denominator caveat.
+WELLS FARGO & COMPANY,Wells Fargo & Company,0000072971,WFC,manual_seed_sec_cik_ticker,0.98,false,Public registrant.
+CITIBANK, N.A.,Citigroup Inc.,0000831001,C,manual_parent_mapping,0.95,true,Maps bank entity to public parent; use with denominator caveat.
+CAPITAL ONE FINANCIAL CORPORATION,Capital One Financial Corporation,0000927628,COF,manual_seed_sec_cik_ticker,0.98,false,Public registrant.
+DISCOVER BANK,Discover Financial Services,0001393612,DFS,manual_parent_mapping,0.90,true,Maps bank entity to public parent; review corporate changes before publication.
+ALLY FINANCIAL INC.,Ally Financial Inc.,0000040729,ALLY,manual_seed_sec_cik_ticker,0.98,false,Public registrant.
+U.S. BANCORP,U.S. Bancorp,0000036104,USB,manual_seed_sec_cik_ticker,0.98,false,Public registrant.
+TRUIST FINANCIAL CORPORATION,Truist Financial Corporation,0000092230,TFC,manual_seed_sec_cik_ticker,0.98,false,Public registrant.
+PNC BANK N.A.,The PNC Financial Services Group Inc.,0000713676,PNC,manual_parent_mapping,0.94,true,Maps bank entity to public parent; use with denominator caveat.
+AMERICAN EXPRESS COMPANY,American Express Company,0000004962,AXP,manual_seed_sec_cik_ticker,0.98,false,Public registrant.
+SYNCHRONY FINANCIAL,Synchrony Financial,0001601712,SYF,manual_seed_sec_cik_ticker,0.98,false,Public registrant.
+M&T BANK CORPORATION,M&T Bank Corporation,0000036270,MTB,manual_seed_sec_cik_ticker,0.97,false,Public registrant.
+FIFTH THIRD BANK, NATIONAL ASSOCIATION,Fifth Third Bancorp,0000035527,FITB,manual_parent_mapping,0.93,true,Maps bank entity to public parent; use with denominator caveat.
+CITIZENS FINANCIAL GROUP, INC.,Citizens Financial Group Inc.,0000759944,CFG,manual_seed_sec_cik_ticker,0.97,false,Public registrant.

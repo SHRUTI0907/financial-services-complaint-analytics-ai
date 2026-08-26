@@ -1,0 +1,13 @@
+question_id,question,expected_evidence_terms,answer_must_include
+Q001,What evidence is there for payment processing complaints?,payment|late fee|credited,complaint IDs and dates
+Q002,Which narratives mention account closures or restrictions?,closed|restricted|blocked,complaint IDs and companies
+Q003,Find complaint evidence related to credit reporting disputes.,credit report|incorrect|dispute,complaint IDs and products
+Q004,Show evidence for fraud or unauthorized transaction themes.,fraud|unauthorized|transaction,complaint IDs and issue names
+Q005,What evidence supports servicing delay problems?,delay|response|servicer,complaint IDs and dates
+Q006,Find examples involving fees and unexplained charges.,fee|charge|explain,complaint IDs and products
+Q007,Which complaint narratives mention document or verification problems?,document|verify|verification,complaint IDs and companies
+Q008,Show evidence of customer support escalation failures.,call|support|response,complaint IDs and narratives
+Q009,Find mortgage-related escrow complaint evidence.,mortgage|escrow|servicer,complaint IDs and dates
+Q010,Find debt collection communication complaint evidence.,debt|collection|call,complaint IDs and companies
+Q011,Retrieve evidence about disputes not being resolved.,dispute|resolved|investigation,complaint IDs and response metadata
+Q012,Find evidence about identity theft or account fraud.,identity theft|fraud|unauthorized,complaint IDs and products

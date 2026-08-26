@@ -1,0 +1,15 @@
+risk_id,system,risk,likelihood,impact,severity,control,owner,monitoring_metric,escalation_threshold
+R001,Grounded LLM answer layer,Unsupported or hallucinated executive claim,3,5,15,Require citations and deterministic metric context,Analytics owner,unsupported_claim_rate,> 0%
+R002,Hybrid retrieval,Relevant complaint evidence is not retrieved,3,4,12,Evaluate Recall@K and show retrieved rows for review,Analytics engineer,recall_at_5,< 85%
+R003,Hybrid retrieval,Citation points to wrong or missing complaint ID,2,5,10,Citation validity test on every eval run,Analytics engineer,citation_validity_rate,< 98%
+R004,Complaint-routing classifier,Misclassification sends work to wrong queue,3,4,12,Monitor macro F1 and per-class recall; keep human override,Model owner,macro_f1,< baseline target
+R005,Complaint-routing classifier,Uneven performance across product classes,4,4,16,Review confusion matrix and per-class metrics,Model owner,min_class_recall,< 50%
+R006,NMF topic model,Topics become unstable after data refresh,3,3,9,Compare top terms and example complaints between runs,Analytics owner,topic_review_pass_rate,< 90%
+R007,Emerging-risk detector,Spike is misread as causal proof,3,4,12,Label z-score as investigation signal only,Risk owner,reviewed_alert_rate,< 100%
+R008,AI value/opportunity model,Modeled capacity value is presented as realized savings,3,5,15,"UI labels observed inputs, assumptions, benchmarks, and model outputs",Business owner,labeling_review,any failure
+R009,AI value/opportunity model,Assumptions produce inflated ROI,3,4,12,"Scenario, sensitivity, and Monte Carlo distributions",Finance partner,probability_npv_positive,low confidence
+R010,Grounded LLM answer layer,Prompt injection changes answer rules,2,4,8,"System prompt, evidence-only context, human review",Product owner,prompt_injection_test_pass,< 100%
+R011,All systems,Public data is stale or incomplete,4,3,12,Show source dates and retrieval timestamps,Data owner,data_age_days,> refresh SLA
+R012,All systems,Privacy mishandling of public complaint narratives,2,5,10,Use redacted CFPB public narratives only; avoid exporting unnecessary text,Data owner,privacy_review,any failure
+R013,SEC normalization,Company-to-registrant mapping combines brands incorrectly,3,5,15,High-confidence gate and manual review artifact,Data owner,manual_review_required,unreviewed normalized metric
+R014,SEC normalization,Assets/revenue denominator is treated as market share,3,4,12,UI caveat and normalization labels,Analytics owner,denominator_caveat_visible,false

@@ -1,0 +1,201 @@
+cfpb_company_name,complaints,suggested_canonical_company_name,suggested_sec_cik,suggested_ticker,match_method,match_score,confidence_tier,manual_review_required,notes
+"TRANSUNION INTERMEDIATE HOLDINGS, INC.",87099,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.28,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Experian Information Solutions Inc.,69862,Capital One Financial Corporation,,,fuzzy_suggestion,0.2926829268292683,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"EQUIFAX, INC.",61755,Bank of America Corporation,,,fuzzy_suggestion,0.42857142857142855,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"CBC Companies, Inc.",1640,Capital One Financial Corporation,,,fuzzy_suggestion,0.4166666666666667,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+LEXISNEXIS,1259,Discover Financial Services,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+CL Holdings LLC,968,Capital One Financial Corporation,,,fuzzy_suggestion,0.45454545454545453,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Portfolio Recovery Associates, LLC",891,Discover Financial Services,,,fuzzy_suggestion,0.32432432432432434,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+ENCORE CAPITAL GROUP INC.,785,Capital One Financial Corporation,,,fuzzy_suggestion,0.5806451612903226,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Resurgent Capital Services L.P.,672,Capital One Financial Corporation,,,fuzzy_suggestion,0.5,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Block, Inc.",607,Capital One Financial Corporation,,,fuzzy_suggestion,0.25,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Chime Financial Inc,488,Capital One Financial Corporation,,,fuzzy_suggestion,0.375,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Paypal Holdings, Inc",461,Capital One Financial Corporation,,,fuzzy_suggestion,0.46153846153846156,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+MOHELA,433,Bank of America Corporation,,,fuzzy_suggestion,0.46153846153846156,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+NAVY FEDERAL CREDIT UNION,397,American Express Company,,,fuzzy_suggestion,0.34146341463414637,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"CCS Financial Services, Inc.",365,U.S. Bancorp,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Kriya Capital, LLC",346,Capital One Financial Corporation,,,fuzzy_suggestion,0.5833333333333334,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Bread Financial Holdings, Inc.",316,Truist Financial Corporation,,,fuzzy_suggestion,0.3,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Self Financial Inc.,312,Discover Financial Services,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"I.C. System, Inc.",293,Truist Financial Corporation,,,fuzzy_suggestion,0.375,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"CAINE & WEINER COMPANY, INC.",267,M&T Bank Corporation,,,fuzzy_suggestion,0.43478260869565216,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Affirm Holdings, Inc",248,Capital One Financial Corporation,,,fuzzy_suggestion,0.38461538461538464,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"National Credit Systems,Inc.",241,Capital One Financial Corporation,,,fuzzy_suggestion,0.4,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Nelnet, Inc.",237,M&T Bank Corporation,,,fuzzy_suggestion,0.3076923076923077,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+BARCLAYS BANK DELAWARE,231,American Express Company,,,fuzzy_suggestion,0.48484848484848486,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"National Credit Adjusters, LLC",227,Discover Financial Services,,,fuzzy_suggestion,0.4166666666666667,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Fidelity National Information Services, Inc. (FNIS)",226,Synchrony Financial,,,fuzzy_suggestion,0.29411764705882354,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Shellpoint Partners, LLC",211,Wells Fargo & Company,,,fuzzy_suggestion,0.4117647058823529,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+GOLDMAN SACHS BANK USA,202,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.5142857142857142,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Servicer under contract with Federal Student Aid,190,Capital One Financial Corporation,,,fuzzy_suggestion,0.2711864406779661,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Rocket Mortgage, LLC",184,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.36363636363636365,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"SANTANDER HOLDINGS USA, INC.",174,Bank of America Corporation,,,fuzzy_suggestion,0.3448275862068966,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+TD BANK US HOLDING COMPANY,169,Synchrony Financial,,,fuzzy_suggestion,0.36363636363636365,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Spring Oaks Capital, LLC",163,Capital One Financial Corporation,,,fuzzy_suggestion,0.4666666666666667,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+OneMain Finance Corporation,154,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.36363636363636365,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+TRANSWORLD SYSTEMS INC,148,M&T Bank Corporation,,,fuzzy_suggestion,0.4,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Maximus Federal Services, Inc.",146,Bank of America Corporation,,,fuzzy_suggestion,0.36363636363636365,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Early Warning Services, LLC",145,Wells Fargo & Company,,,fuzzy_suggestion,0.42857142857142855,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Westlake Services, LLC",138,Wells Fargo & Company,,,fuzzy_suggestion,0.34782608695652173,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"SOFI TECHNOLOGIES, INC.",132,Fifth Third Bancorp,,,fuzzy_suggestion,0.42857142857142855,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+UNITED SERVICES AUTOMOBILE ASSOCIATION,132,M&T Bank Corporation,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Aldous & Associates, PLLC",124,M&T Bank Corporation,,,fuzzy_suggestion,0.36363636363636365,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+T.S. Holdings,119,Synchrony Financial,,,fuzzy_suggestion,0.38095238095238093,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Radius Global Solutions LLC,110,Capital One Financial Corporation,,,fuzzy_suggestion,0.4117647058823529,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Harris & Harris, Ltd.",106,American Express Company,,,fuzzy_suggestion,0.48484848484848486,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Exeter Finance, LLC.",105,Bank of America Corporation,,,fuzzy_suggestion,0.38095238095238093,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Kikoff Inc.,102,Discover Financial Services,,,fuzzy_suggestion,0.2857142857142857,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Rowland Avenue Management, Inc. A/KA Columbia Debt Recovery, LLC d/b/a Genesis",100,American Express Company,,,fuzzy_suggestion,0.21686746987951808,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Credit Control, LLC",95,Capital One Financial Corporation,,,fuzzy_suggestion,0.48,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+TrueAccord Corp.,92,Truist Financial Corporation,,,fuzzy_suggestion,0.375,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+FIFTH THIRD FINANCIAL CORPORATION,91,Fifth Third Bancorp,,,fuzzy_suggestion,1.0,HIGH CONFIDENCE,True,Suggestion only. Weak matches must not be used for normalization.
+CREDIT ACCEPTANCE CORPORATION,90,Capital One Financial Corporation,,,fuzzy_suggestion,0.35714285714285715,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+EdFinancial Services,90,Bank of America Corporation,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"SUNRISE CREDIT SERVICES, INC",86,Truist Financial Corporation,,,fuzzy_suggestion,0.4,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Klarna AB,86,Wells Fargo & Company,,,fuzzy_suggestion,0.4166666666666667,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"CLGF Holdco 1, LLC",85,Capital One Financial Corporation,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Bridgecrest Acceptance Corporation,81,American Express Company,,,fuzzy_suggestion,0.3157894736842105,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+TOYOTA MOTOR CREDIT CORPORATION,77,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.3783783783783784,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Atlanticus Services Corporation,75,Capital One Financial Corporation,,,fuzzy_suggestion,0.38095238095238093,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Ability Recovery Services, LLC",74,Discover Financial Services,,,fuzzy_suggestion,0.5,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"HUNTINGTON NATIONAL BANK, THE",72,Citigroup Inc.,,,fuzzy_suggestion,0.42105263157894735,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Freedom Mortgage Company,70,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.35294117647058826,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"ID Analytics, Inc.",70,M&T Bank Corporation,,,fuzzy_suggestion,0.42105263157894735,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Ocwen Financial Corporation,68,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.34782608695652173,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"ProCollect, Inc.",67,Discover Financial Services,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"HW Holding, Inc",66,Fifth Third Bancorp,,,fuzzy_suggestion,0.38095238095238093,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"FAIR COLLECTIONS & OUTSOURCING, INC.",66,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.34782608695652173,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+NCB Management Services Inc.,65,M&T Bank Corporation,,,fuzzy_suggestion,0.38095238095238093,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+CORELOGIC INC,64,Bank of America Corporation,,,fuzzy_suggestion,0.375,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"UPGRADE, INC.",62,Capital One Financial Corporation,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"General Motors Financial Company, Inc.",60,American Express Company,,,fuzzy_suggestion,0.4,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Global Lending Services LLC,59,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.375,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+V and H Portfolio,56,M&T Bank Corporation,,,fuzzy_suggestion,0.5,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Credit Karma, LLC",56,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.38461538461538464,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Credit Corp Solutions Inc.,56,Capital One Financial Corporation,,,fuzzy_suggestion,0.4444444444444444,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Halsted Financial Services, LLC.",55,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.4,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Rent Recovery Solutions,54,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.32432432432432434,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Sequium Asset Solutions, LLC",53,Truist Financial Corporation,,,fuzzy_suggestion,0.27586206896551724,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"SELECT PORTFOLIO SERVICING, INC.",53,Wells Fargo & Company,,,fuzzy_suggestion,0.34146341463414637,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Upstart Holdings, Inc.",53,Capital One Financial Corporation,,,fuzzy_suggestion,0.4444444444444444,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"National Consumer Telecom & Utilities Exchange, Inc.",53,American Express Company,,,fuzzy_suggestion,0.36363636363636365,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Avant Holding Company, Inc.",52,Synchrony Financial,,,fuzzy_suggestion,0.36363636363636365,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"PENNYMAC LOAN SERVICES, LLC.",52,The PNC Financial Services Group Inc.,,,fuzzy_suggestion,0.45454545454545453,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+ROBINHOOD MARKETS INC.,50,American Express Company,,,fuzzy_suggestion,0.42424242424242425,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"American Credit Acceptance, LLC",49,American Express Company,,,fuzzy_suggestion,0.5238095238095238,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+World Acceptance Corporation,47,Capital One Financial Corporation,,,fuzzy_suggestion,0.4444444444444444,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"CARRINGTON MORTGAGE SERVICES, LLC",47,Capital One Financial Corporation,,,fuzzy_suggestion,0.4666666666666667,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+BMO BANK NATIONAL ASSOCIATION,47,Bank of America Corporation,,,fuzzy_suggestion,0.2,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"The CBE Group, Inc.",47,The PNC Financial Services Group Inc.,,,fuzzy_suggestion,0.7777777777777778,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Central Portfolio Control Inc.,46,Capital One Financial Corporation,,,fuzzy_suggestion,0.3888888888888889,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+REGIONS FINANCIAL CORPORATION,45,Truist Financial Corporation,,,fuzzy_suggestion,0.46153846153846156,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Paramount GR Holdings, LLC",45,The PNC Financial Services Group Inc.,,,fuzzy_suggestion,0.4,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+PENTAGON FEDERAL CREDIT UNION,45,Capital One Financial Corporation,,,fuzzy_suggestion,0.35,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"LoanCare, LLC",45,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.46153846153846156,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Lockhart, Morris & Montgomery Inc.",44,M&T Bank Corporation,,,fuzzy_suggestion,0.3783783783783784,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"NRA Group, LLC",44,The PNC Financial Services Group Inc.,,,fuzzy_suggestion,0.7777777777777778,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+FinCo Services Inc DBA Current,44,Discover Financial Services,,,fuzzy_suggestion,0.32,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"ENOVA INTERNATIONAL, INC.",44,Bank of America Corporation,,,fuzzy_suggestion,0.3076923076923077,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Selene Holdings LLC,43,Synchrony Financial,,,fuzzy_suggestion,0.4166666666666667,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"RentDebt Automated Collections, LLC",43,M&T Bank Corporation,,,fuzzy_suggestion,0.2702702702702703,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Comerica,43,Bank of America Corporation,,,fuzzy_suggestion,0.8,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+TClub Inc,43,Truist Financial Corporation,,,fuzzy_suggestion,0.36363636363636365,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Source Receivables Management LLC,43,Wells Fargo & Company,,,fuzzy_suggestion,0.2727272727272727,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"ONLINE Information Services, Inc.",42,Citigroup Inc.,,,fuzzy_suggestion,0.2962962962962963,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Security Credit Services, LLC",42,American Express Company,,,fuzzy_suggestion,0.3870967741935484,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Collection Management Holdings, LLC",42,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.3181818181818182,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+HYUNDAI CAPITAL AMERICA,41,Capital One Financial Corporation,,,fuzzy_suggestion,0.5294117647058824,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Navient Solutions, LLC.",41,Capital One Financial Corporation,,,fuzzy_suggestion,0.42857142857142855,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Eastern Account Systems of Connecticut, Inc.",40,American Express Company,,,fuzzy_suggestion,0.27450980392156865,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+SLM CORPORATION,39,U.S. Bancorp,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Absolute Resolutions Corp.,39,American Express Company,,,fuzzy_suggestion,0.3888888888888889,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"CAVALRY INVESTMENTS, LLC",39,Capital One Financial Corporation,,,fuzzy_suggestion,0.4666666666666667,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+NISSAN MOTOR ACCEPTANCE COMPANY LLC,38,American Express Company,,,fuzzy_suggestion,0.3076923076923077,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Mr. Cooper Group Inc.,37,The PNC Financial Services Group Inc.,,,fuzzy_suggestion,0.5833333333333334,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+AMERICAN HONDA FINANCE CORP,36,American Express Company,,,fuzzy_suggestion,0.5263157894736842,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"ACIMA CREDIT, LLC",36,American Express Company,,,fuzzy_suggestion,0.42857142857142855,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Conduent Incorporated,35,Capital One Financial Corporation,,,fuzzy_suggestion,0.42105263157894735,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Aargon Agency, Inc.",35,Wells Fargo & Company,,,fuzzy_suggestion,0.5,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+LCI Acquisition Inc.,35,Capital One Financial Corporation,,,fuzzy_suggestion,0.46153846153846156,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"PINNACLE FINANCIAL PARTNERS, INC.",35,Capital One Financial Corporation,,,fuzzy_suggestion,0.5,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"BMW Financial Services NA, LLC",35,Bank of America Corporation,,,fuzzy_suggestion,0.2,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Southwest Credit Systems, L.P.",35,Capital One Financial Corporation,,,fuzzy_suggestion,0.2564102564102564,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Kovo,34,Discover Financial Services,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Credit Systems International, Inc.",34,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.38095238095238093,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Bounce AI, Inc.",34,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.4444444444444444,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"CarMax, Inc.",34,Capital One Financial Corporation,,,fuzzy_suggestion,0.35294117647058826,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Mercedes Benz Financial Services,33,American Express Company,,,fuzzy_suggestion,0.4827586206896552,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+MoneyLion Inc.,33,Bank of America Corporation,,,fuzzy_suggestion,0.375,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Monterey Financial Services LLC,33,Bank of America Corporation,,,fuzzy_suggestion,0.4,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Coinbase, Inc.",32,Capital One Financial Corporation,,,fuzzy_suggestion,0.42105263157894735,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Bull City Financial Solutions, Inc",31,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.36363636363636365,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+KEYCORP,31,Discover Financial Services,,,fuzzy_suggestion,0.4,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Continental Finance Company, LLC",31,Capital One Financial Corporation,,,fuzzy_suggestion,0.5333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Possible Financial Inc,30,Capital One Financial Corporation,,,fuzzy_suggestion,0.3157894736842105,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Debt Recovery Solutions, LLC",29,Discover Financial Services,,,fuzzy_suggestion,0.3870967741935484,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+FISERV FINXACT CORE,29,American Express Company,,,fuzzy_suggestion,0.34285714285714286,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Central Research Inc,29,Capital One Financial Corporation,,,fuzzy_suggestion,0.4444444444444444,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"MIB Group, Inc.",29,Citigroup Inc.,,,fuzzy_suggestion,0.6666666666666666,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+BTH Management,29,M&T Bank Corporation,,,fuzzy_suggestion,0.38095238095238093,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Netspend Corporation,29,Wells Fargo & Company,,,fuzzy_suggestion,0.34782608695652173,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+LJ Ross Associates,29,Wells Fargo & Company,,,fuzzy_suggestion,0.36363636363636365,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Consumer Portfolio Services, Inc.",27,American Express Company,,,fuzzy_suggestion,0.35294117647058826,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Optio Solutions, LLC",27,Capital One Financial Corporation,,,fuzzy_suggestion,0.38461538461538464,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Sezzle Inc.,26,Discover Financial Services,,,fuzzy_suggestion,0.2857142857142857,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+TransferWise Ltd,26,Truist Financial Corporation,,,fuzzy_suggestion,0.4444444444444444,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Diversified Adjustment Service, Inc.",25,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.2727272727272727,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"PLANET HOME LENDING, LLC",25,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.4864864864864865,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+CrossCountry Mortgage LLC,25,Synchrony Financial,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+MIDFIRST BANK,25,Truist Financial Corporation,,,fuzzy_suggestion,0.42857142857142855,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Ava Finance, Inc",24,Capital One Financial Corporation,,,fuzzy_suggestion,0.45454545454545453,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Capio Partners, LLC",24,Capital One Financial Corporation,,,fuzzy_suggestion,0.56,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"MRS BPO, LLC",24,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.32,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+TekCollect Inc.,24,Discover Financial Services,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Waypoint Resource Group, LLC",24,The PNC Financial Services Group Inc.,,,fuzzy_suggestion,0.5625,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+STATE EMPLOYEES CREDIT UNION,23,Synchrony Financial,,,fuzzy_suggestion,0.32432432432432434,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+HSBC NORTH AMERICA HOLDINGS INC.,23,American Express Company,,,fuzzy_suggestion,0.4186046511627907,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Williams, Rush & Associates, LLC",23,Wells Fargo & Company,,,fuzzy_suggestion,0.46511627906976744,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+The Receivable Management Services LLC,23,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.358974358974359,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+IPAC'S Inc.,22,U.S. Bancorp,,,fuzzy_suggestion,0.4444444444444444,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Professional Recovery Management,22,Discover Financial Services,,,fuzzy_suggestion,0.3,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+CCF Intermediate Holdings LLC,22,Citigroup Inc.,,,fuzzy_suggestion,0.29411764705882354,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Incomm Holdings Inc.,22,Synchrony Financial,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"United Shore Financial Services, LLC",22,U.S. Bancorp,,,fuzzy_suggestion,0.4,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Bilt Technologies, Inc.",22,Fifth Third Bancorp,,,fuzzy_suggestion,0.42857142857142855,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+FORD MOTOR CREDIT CO.,22,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.34285714285714286,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+NEW YORK COMMUNITY BANCORP INC,21,Truist Financial Corporation,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+MicroBilt / PRBC (formerly CL Verify),20,Discover Financial Services,,,fuzzy_suggestion,0.2926829268292683,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+FIRST TECHNOLOGY FEDERAL CREDIT UNION,20,Capital One Financial Corporation,,,fuzzy_suggestion,0.2916666666666667,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+VW Credit,20,Truist Financial Corporation,,,fuzzy_suggestion,0.4,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Lendmark Financial Services,20,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.2727272727272727,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Credit Fresh Holdings Inc,20,Fifth Third Bancorp,,,fuzzy_suggestion,0.375,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"WESTERN UNION COMPANY, THE",20,Synchrony Financial,,,fuzzy_suggestion,0.36363636363636365,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+OPORTUN FINANCIAL CORPORATION,20,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.32,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Opportunity Financial, LLC",20,Synchrony Financial,,,fuzzy_suggestion,0.3,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Colony Brands, Inc.",20,M&T Bank Corporation,,,fuzzy_suggestion,0.4,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+CHERRY TECHNOLOGIES INC.,19,Fifth Third Bancorp,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+MORGAN STANLEY & CO. LLC,19,JPMorgan Chase & Co.,,,fuzzy_suggestion,0.7222222222222222,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Continental Services Group, Inc. d/b/a ConServe",19,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.4782608695652174,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"LAKEVIEW LOAN SERVICING, LLC",19,American Express Company,,,fuzzy_suggestion,0.358974358974359,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Thaxton Investment Corporation,19,Capital One Financial Corporation,,,fuzzy_suggestion,0.3448275862068966,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Army and Air Force Exchange Service,19,American Express Company,,,fuzzy_suggestion,0.35294117647058826,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Dave Operating, LLC",19,Bank of America Corporation,,,fuzzy_suggestion,0.38095238095238093,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Sunbit, Inc.",18,Truist Financial Corporation,,,fuzzy_suggestion,0.3333333333333333,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+United PanAm Financial Corp.,18,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.38461538461538464,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+FIRST NATIONAL BANK OF OMAHA,18,Capital One Financial Corporation,,,fuzzy_suggestion,0.36363636363636365,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"MARINER FINANCE, LLC",18,American Express Company,,,fuzzy_suggestion,0.3870967741935484,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+InDebted Corporation,18,M&T Bank Corporation,,,fuzzy_suggestion,0.4,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+CONTRACT CALLERS INC,17,American Express Company,,,fuzzy_suggestion,0.375,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"The Bureaus, Inc.",17,U.S. Bancorp,,,fuzzy_suggestion,0.4,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Open Dealer Exchange, LLC",17,American Express Company,,,fuzzy_suggestion,0.3888888888888889,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"AmeriHome Mortgage Company, LLC",17,Bank of America Corporation,,,fuzzy_suggestion,0.48,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Cedars Business Services, LLC",17,American Express Company,,,fuzzy_suggestion,0.3870967741935484,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Zions Debt Holdings,17,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.30303030303030304,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Diverse Funding Associates LLC,17,M&T Bank Corporation,,,fuzzy_suggestion,0.30303030303030304,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+United Revenue Corporation,16,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.35714285714285715,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Synergetic Communication Inc,16,Synchrony Financial,,,fuzzy_suggestion,0.36363636363636365,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+First Credit Services Inc.,16,Fifth Third Bancorp,,,fuzzy_suggestion,0.34782608695652173,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+Stellantis Financial Services US Corp.,16,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.37037037037037035,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"Professional Debt Mediation, Inc.",16,Capital One Financial Corporation,,,fuzzy_suggestion,0.3684210526315789,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+BOEING EMPLOYEES' CREDIT UNION,16,American Express Company,,,fuzzy_suggestion,0.35555555555555557,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.
+"LD Holdings Group, LLC",15,Citizens Financial Group Inc.,,,fuzzy_suggestion,0.5806451612903226,LOW - REJECT,True,Suggestion only. Weak matches must not be used for normalization.

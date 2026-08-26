@@ -1,0 +1,84 @@
+{
+  "status": "trained",
+  "target": "product",
+  "records": 5310,
+  "classes": 10,
+  "baseline_macro_f1": 0.05178571428571429,
+  "model_macro_f1": 0.7292807635352218,
+  "classification_report": {
+    "Checking or savings account": {
+      "precision": 0.7229437229437229,
+      "recall": 0.7167381974248928,
+      "f1-score": 0.7198275862068966,
+      "support": 233.0
+    },
+    "Credit card": {
+      "precision": 0.7610619469026548,
+      "recall": 0.7962962962962963,
+      "f1-score": 0.7782805429864253,
+      "support": 216.0
+    },
+    "Credit reporting or other personal consumer reports": {
+      "precision": 0.55,
+      "recall": 0.859375,
+      "f1-score": 0.6707317073170732,
+      "support": 64.0
+    },
+    "Debt collection": {
+      "precision": 0.9627791563275434,
+      "recall": 0.8362068965517241,
+      "f1-score": 0.895040369088812,
+      "support": 464.0
+    },
+    "Money transfer, virtual currency, or money service": {
+      "precision": 0.6,
+      "recall": 0.6699029126213593,
+      "f1-score": 0.6330275229357798,
+      "support": 103.0
+    },
+    "Mortgage": {
+      "precision": 0.9101123595505618,
+      "recall": 0.9418604651162791,
+      "f1-score": 0.9257142857142857,
+      "support": 86.0
+    },
+    "Payday loan, title loan, personal loan, or advance loan": {
+      "precision": 0.44642857142857145,
+      "recall": 0.5555555555555556,
+      "f1-score": 0.49504950495049505,
+      "support": 45.0
+    },
+    "Prepaid card": {
+      "precision": 0.6666666666666666,
+      "recall": 0.4,
+      "f1-score": 0.5,
+      "support": 15.0
+    },
+    "Student loan": {
+      "precision": 0.925,
+      "recall": 0.7872340425531915,
+      "f1-score": 0.8505747126436781,
+      "support": 47.0
+    },
+    "Vehicle loan or lease": {
+      "precision": 0.7966101694915254,
+      "recall": 0.8545454545454545,
+      "f1-score": 0.8245614035087719,
+      "support": 55.0
+    },
+    "accuracy": 0.7884036144578314,
+    "macro avg": {
+      "precision": 0.7341602593311245,
+      "recall": 0.7417714820664754,
+      "f1-score": 0.7292807635352218,
+      "support": 1328.0
+    },
+    "weighted avg": {
+      "precision": 0.807388783486829,
+      "recall": 0.7884036144578314,
+      "f1-score": 0.7936538894884018,
+      "support": 1328.0
+    }
+  },
+  "business_metric_note": "Macro F1 weights product classes equally, which matters when routing less frequent complaint types."
+}

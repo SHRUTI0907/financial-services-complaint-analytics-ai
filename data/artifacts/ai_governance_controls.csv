@@ -1,0 +1,13 @@
+control_id,system,control,status,evidence
+G001,Grounded LLM answer layer,Citation-required answer policy,Implemented,Answers cite CFPB complaints or analytics outputs.
+G002,Grounded LLM answer layer,Insufficient-evidence abstention,Implemented,Fallback abstains when no evidence is retrieved.
+G003,Hybrid retrieval,Metadata-filter correctness test,Implemented,RAG eval includes impossible filters and expected filters.
+G004,Hybrid retrieval,Retrieval quality threshold,Implemented,Recall@5 and Recall@10 are calculated.
+G005,Complaint-routing classifier,Baseline comparison,Implemented,Macro F1 is compared with most-frequent baseline.
+G006,Complaint-routing classifier,Per-class evaluation artifact,Implemented,Model report stores classification details where generated.
+G007,NMF topic model,Human topic review,Designed,Topic terms and example evidence are visible for analyst review.
+G008,Emerging-risk detector,Causal caveat,Implemented,UI labels z-score as investigation signal.
+G009,AI value/opportunity model,Assumption transparency,Implemented,"UI exposes handling time, adoption, addressable share, costs, and success probability."
+G010,AI value/opportunity model,Monte Carlo uncertainty,Implemented,Seeded simulation produces NPV and payback probabilities.
+G011,SEC normalization,Manual-review gate,Implemented,Only high-confidence non-review mappings can normalize.
+G012,All systems,No compliance-certification claim,Implemented,"Docs state NIST-informed, not certified."

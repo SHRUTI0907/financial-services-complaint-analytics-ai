@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+.env
+*.zip
+venv/
+.venv/
+DocExtract/
+Project_resume_launch/
+data/raw/
+!data/company_entity_map.csv

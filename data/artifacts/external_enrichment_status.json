@@ -1,0 +1,23 @@
+{
+  "sec_edgar": {
+    "pipeline_implemented": true,
+    "live_verified_in_this_sandbox": false,
+    "verified_observation_count": 0,
+    "reason": "External network requests were blocked by the sandbox policy during this run.",
+    "source": "SEC EDGAR Company Facts API"
+  },
+  "bls_oews": {
+    "pipeline_implemented": true,
+    "live_verified_in_this_sandbox": false,
+    "verified_benchmark_rows": 0,
+    "reason": "External network requests were blocked by the sandbox policy during this run.",
+    "source": "U.S. Bureau of Labor Statistics OEWS"
+  },
+  "fred": {
+    "pipeline_implemented": true,
+    "live_verified_in_this_sandbox": false,
+    "verified_series": 0,
+    "reason": "FRED_API_KEY is not configured in this local environment.",
+    "source": "Federal Reserve Bank of St. Louis FRED"
+  }
+}

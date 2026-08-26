@@ -1,0 +1,9 @@
+{
+  "simulations": 5000,
+  "median_npv": -1928525.6893724282,
+  "p10_npv": -2491634.6652408373,
+  "p50_npv": -1928525.6893724282,
+  "p90_npv": -1472393.6099017663,
+  "probability_npv_positive": 0.0,
+  "probability_payback_within_3_years": 0.0
+}
