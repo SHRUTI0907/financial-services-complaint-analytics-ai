@@ -7,7 +7,7 @@ An interactive analytics application for exploring Consumer Financial Protection
 - Analyzes 250,000 real CFPB complaints across 1,383 companies.
 - Evaluates 12 financial products and 87 issue categories.
 - Surfaces trend and anomaly signals for complaint patterns.
-- Uses NMF topic modeling and grounded RAG over public complaint narratives.
+- Uses topic modeling and cited narrative search over public complaint text.
 - Evaluates a 10-class complaint-routing model with 0.729 macro F1.
 
 ## Data
@@ -23,7 +23,7 @@ Verified local release:
 | Products | 12 |
 | Issues | 87 |
 | Public narratives | 5,386 |
-| RAG-indexed narratives | 5,343 |
+| Indexed narratives | 5,343 |
 | Date range | 2016-03-02 to 2026-08-09 |
 
 ## App Sections
@@ -33,7 +33,7 @@ Verified local release:
 | Overview | Complaint KPIs and volume trends |
 | Complaint Patterns | Product and issue analysis with anomaly signals |
 | Company View | Company-level complaint volume and product mix |
-| Narrative Search | NMF topics and grounded narrative evidence |
+| Narrative Search | Topic modeling and cited complaint examples |
 | Model Performance | Routing model and retrieval evaluation |
 
 ## Measured Results
@@ -43,9 +43,9 @@ Verified local release:
 | Routing model classes | 10 |
 | Routing model macro F1 | 0.729 |
 | Baseline macro F1 | 0.052 |
-| RAG evaluation questions | 45 |
-| RAG Recall@5 | 97.8% |
-| RAG citation validity | 100.0% |
+| Retrieval evaluation questions | 45 |
+| Evidence Recall@5 | 97.8% |
+| Citation validity | 100.0% |
 | Tests | 25 passing |
 
 Detailed metric provenance is in `docs/FINAL_VERIFIED_METRICS.md`.
@@ -59,7 +59,7 @@ Official CFPB data
   -> trend and anomaly analysis
   -> NMF topic modeling
   -> TF-IDF routing model
-  -> hybrid RAG index
+  -> narrative retrieval index
   -> Streamlit decision-support app
 ```
 
@@ -90,4 +90,4 @@ Use these deploy settings:
 - CFPB complaints are consumer-submitted records, not a complete measure of all customer experience.
 - Public narratives are sparse and may be redacted.
 - Company comparisons are raw complaint counts, not market-share-adjusted rates.
-- RAG answers are grounded in retrieved complaint narratives and should not be treated as legal or regulatory conclusions.
+- Narrative-search answers are grounded in retrieved complaint text and should not be treated as legal or regulatory conclusions.

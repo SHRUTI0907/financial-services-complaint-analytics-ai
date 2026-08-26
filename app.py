@@ -441,7 +441,7 @@ elif page == "Narrative Search":
     c1, c2, c3 = st.columns(3)
     with c1: metric_card("Indexed narratives", f"{final_metrics.get('rag_indexed_narratives', 5343):,}", "Searchable complaint text")
     with c2: metric_card("NMF topics", f"{len(topics):,}", "Topic modeling")
-    with c3: metric_card("RAG Recall@5", f"{rag_metrics.get('recall_at_5', 0):.1%}", "Evaluation metric")
+    with c3: metric_card("Evidence Recall@5", f"{rag_metrics.get('recall_at_5', 0):.1%}", "Retrieval evaluation")
     if not topics.empty:
         st.subheader("NMF topic summary")
         st.dataframe(topics, width="stretch")
@@ -475,4 +475,4 @@ elif page == "Model Performance":
     with c1: metric_card("Routing classes", f"{report.get('classes', 10):,}", "Complaint classification")
     with c2: metric_card("Macro F1", f"{report.get('model_macro_f1', 0):.3f}", "TF-IDF Logistic Regression")
     with c3: metric_card("Baseline F1", f"{report.get('baseline_macro_f1', 0):.3f}", "Comparison model")
-    with c4: metric_card("RAG citation validity", f"{rag_metrics.get('citation_validity_rate', 0):.0%}", "Grounded retrieval")
+    with c4: metric_card("Citation validity", f"{rag_metrics.get('citation_validity_rate', 0):.0%}", "Retrieved narratives")

@@ -16,9 +16,9 @@ These are the verified metrics for the current release.
 | Classification classes | 10 | `data/artifacts/model_report.json` |
 | Classification macro F1 | 0.729 | `data/artifacts/model_report.json` |
 | Baseline macro F1 | 0.052 | `data/artifacts/model_report.json` |
-| RAG evaluation questions | 45 | `evaluation/rag_questions.json` |
-| RAG Recall@5 | 97.8% | `data/artifacts/rag_eval_metrics.json` |
-| RAG Recall@10 | 97.8% | `data/artifacts/rag_eval_metrics.json` |
+| Retrieval evaluation questions | 45 | `evaluation/rag_questions.json` |
+| Evidence Recall@5 | 97.8% | `data/artifacts/rag_eval_metrics.json` |
+| Evidence Recall@10 | 97.8% | `data/artifacts/rag_eval_metrics.json` |
 | Citation validity | 100.0% | `data/artifacts/rag_eval_metrics.json` |
 | Live dashboard sections | 5 | `app.py` navigation |
 | Tests passed | 25 / 25 | `python3 -m unittest discover -s tests` |
@@ -27,5 +27,5 @@ These are the verified metrics for the current release.
 
 - Analyzed 250K real CFPB complaints across 1,383 companies.
 - Evaluated 12 products and 87 issue categories using trend and anomaly analysis.
-- Built NLP and grounded RAG features over 5,343 indexed complaint narratives.
+- Built complaint-text analysis over 5,343 indexed narratives using topic modeling and cited retrieval.
 - Developed a 10-class complaint-routing model with 0.729 macro F1.
